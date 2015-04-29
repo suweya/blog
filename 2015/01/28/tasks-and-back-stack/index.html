@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tasks and Back Stack | 迷途小书童</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Using the manifest file
+When declaring an activity in your manifest file, you can specify how the activity should associate with a task using the  element’s launchMode attribute.
+The launchMode attrib">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tasks and Back Stack">
+<meta property="og:url" content="http://blog.suweya.net/2015/01/28/tasks-and-back-stack/">
+<meta property="og:site_name" content="迷途小书童">
+<meta property="og:description" content="Using the manifest file
+When declaring an activity in your manifest file, you can specify how the activity should associate with a task using the  element’s launchMode attribute.
+The launchMode attrib">
+<meta property="og:image" content="http://bcs.duapp.com/suweyablog/diagram_backstack_singletask_multiactivity.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tasks and Back Stack">
+<meta name="twitter:description" content="Using the manifest file
+When declaring an activity in your manifest file, you can specify how the activity should associate with a task using the  element’s launchMode attribute.
+The launchMode attrib">
+
+  
+    <link rel="alternative" href="/atom.xml" title="迷途小书童" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<div class="profilepic">
+			<img src="http://bcs.duapp.com/suweyablog/avatar.png">
+		</div>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">迷途小书童</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/suweya" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/suweya" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://plus.google.com/101772966739687843526/posts" title="google">google</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud">
+						<a href="/tags/Image/" style="font-size: NaNpx;">Image</a><a href="/tags/Markdown/" style="font-size: NaNpx;">Markdown</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					尘世间迷途小书童
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay"></div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://bcs.duapp.com/suweyablog/avatar.png">
+			</div>
+
+			<hgroup>
+			  <h1 class="header-author"><a href="/">迷途小书童</a></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/suweya" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/suweya" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://plus.google.com/101772966739687843526/posts" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <article id="post-tasks-and-back-stack" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/01/28/tasks-and-back-stack/" class="article-date">
+  	<time datetime="2015-01-28T01:11:33.000Z" itemprop="datePublished">1月 28 2015</time>
+</a>
+      
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Tasks and Back Stack
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Using_the_manifest_file">Using the manifest file</h2>
+<p>When declaring an activity in your manifest file, you can specify how the activity should associate with a task using the <activity> element’s launchMode attribute.</activity></p>
+<p>The launchMode attribute specifies an instruction on how the activity should be launched into a task. There are four different launch modes you can assign to the launchMode attribute:</p>
+<a id="more"></a>
+
+<ul>
+<li>“standard” (the default mode)Default. The system creates a new<br>instance of the activity in the task from which it was started and<br>routes the intent to it. The activity can be instantiated multiple<br>times, each instance can belong to different tasks, and one task     can have multiple instances.</li>
+</ul>
+<ul>
+<li>“singleTop”If an instance of the activity already exists at the top<br>of the current task, the system routes the intent to that instance<br>through a call to its onNewIntent() method, rather than creating a<br>new instance of the activity. The activity can be instantiated<br>multiple times, each instance can belong to different tasks, and one<br>task can have multiple instances (but only if the activity at the top<br>of the back stack is not an existing instance of the activity).  For<br>example, suppose a task’s back stack consists of root activity A with<br>activities B, C, and D on top (the stack is A-B-C-D; D is on top). An<br>intent arrives for an activity of type D. If D has the default<br>“standard” launch mode, a new instance of the class is launched and<br>the stack becomes A-B-C-D-D. However, if D’s launch mode is<br>“singleTop”, the existing instance of D receives the intent through<br>onNewIntent(), because it’s at the top of the stack—the stack remains<br>A-B-C-D. However, if an intent arrives for an activity of type B,<br>then a new instance of B is added to the stack, even if its launch<br>mode is “singleTop”.</li>
+</ul>
+<blockquote>
+<p>Note: When a new instance of an activity is created, the user can<br>press the Back button to return to the previous activity. But when an<br>existing instance of an activity handles a new intent, the user cannot<br>press the Back button to return to the state of the activity before<br>the new intent arrived in onNewIntent().</p>
+</blockquote>
+<ul>
+<li>“singleTask”The system creates a new task and instantiates the<br>activity at the root of the new task. However, if an instance of the<br>activity already exists in a separate task, the system routes the<br>intent to the existing instance through a call to its onNewIntent()<br>method, rather than creating a new instance. Only one instance of the<br>activity can exist at a time.</li>
+</ul>
+<blockquote>
+<p>Note: Although the activity starts in a new task, the Back button<br>still returns the user to the previous activity.</p>
+</blockquote>
+<ul>
+<li>“singleInstance”.Same as “singleTask”, except that the system doesn’t<br>launch any other activities into the task holding the instance. The<br>activity is always the single and only member of its task; any<br>activities started by this one open in a separate task.</li>
+</ul>
+<p>As another example, the Android Browser application declares that the web browser activity should always open in its own task—by specifying the singleTask launch mode in the <activity> element. This means that if your application issues an intent to open the Android Browser, its activity is not placed in the same task as your application. Instead, either a new task starts for the Browser or, if the Browser already has a task running in the background, that task is brought forward to handle the new intent.</activity></p>
+<p>Regardless of whether an activity starts in a new task or in the same task as the activity that started it, the Back button always takes the user to the previous activity. However, if you start an activity that specifies the singleTask launch mode, then if an instance of that activity exists in a background task, that whole task is brought to the foreground. At this point, the back stack now includes all activities from the task brought forward, at the top of the stack. Figure 4 illustrates this type of scenario.</p>
+<p><img src="http://bcs.duapp.com/suweyablog/diagram_backstack_singletask_multiactivity.png" alt=""></p>
+<p>Figure 4. A representation of how an activity with launch mode “singleTask” is added to the back stack. If the activity is already a part of a background task with its own back stack, then the entire back stack also comes forward, on top of the current task.</p>
+<blockquote>
+<p>Note: The behaviors that you specify for your activity with the launchMode attribute can be overridden by flags included with the intent that start your activity, as discussed in the next section.</p>
+</blockquote>
+<h2 id="Using_Intent_flags">Using Intent flags</h2>
+<ul>
+<li>FLAG_ACTIVITY_NEW_TASK</li>
+</ul>
+<p>Start the activity in a new task. If a task is already running for the activity you are now starting, that task is brought to the foreground with its last state restored and the activity receives the new intent in onNewIntent().<br>This produces the same behavior as the “singleTask” launchMode value, discussed in the previous section.</p>
+<ul>
+<li>FLAG_ACTIVITY_SINGLE_TOP</li>
+</ul>
+<p>If the activity being started is the current activity (at the top of the back stack), then the existing instance receives a call to onNewIntent(), instead of creating a new instance of the activity.<br>This produces the same behavior as the “singleTop” launchMode value, discussed in the previous section.</p>
+<ul>
+<li>FLAG_ACTIVITY_CLEAR_TOP</li>
+</ul>
+<p>If the activity being started is already running in the current task, then instead of launching a new instance of that activity, all of the other activities on top of it are destroyed and this intent is delivered to the resumed instance of the activity (now on top), through onNewIntent()).<br>There is no value for the launchMode attribute that produces this behavior.</p>
+<p>FLAG_ACTIVITY_CLEAR_TOP is most often used in conjunction with FLAG_ACTIVITY_NEW_TASK. When used together, these flags are a way of locating an existing activity in another task and putting it in a position where it can respond to the intent. </p>
+<blockquote>
+<p>Note: If the launch mode of the designated activity is “standard”, it<br>too is removed from the stack and a new instance is launched in its<br>place to handle the incoming intent. That’s because a new instance is<br>always created for a new intent when the launch mode is “standard”.</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/03/02/retrofit/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          retrofit
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/01/04/gson-usage/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Gson usage</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 迷途小书童
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  <script src="/js/main.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>

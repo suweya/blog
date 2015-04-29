@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Google&#39;s Testing Tools For Android --- Espresso | 迷途小书童</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Samples:https://github.com/googlesamples/android-testing/tree/master/espresso/BasicSample
+Basics
+The Espresso API encourages test authors to think in terms of what a user might do while interacting wi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google's Testing Tools For Android --- Espresso">
+<meta property="og:url" content="http://blog.suweya.net/2014/12/26/android-test-sample/">
+<meta property="og:site_name" content="迷途小书童">
+<meta property="og:description" content="Samples:https://github.com/googlesamples/android-testing/tree/master/espresso/BasicSample
+Basics
+The Espresso API encourages test authors to think in terms of what a user might do while interacting wi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Google's Testing Tools For Android --- Espresso">
+<meta name="twitter:description" content="Samples:https://github.com/googlesamples/android-testing/tree/master/espresso/BasicSample
+Basics
+The Espresso API encourages test authors to think in terms of what a user might do while interacting wi">
+
+  
+    <link rel="alternative" href="/atom.xml" title="迷途小书童" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<div class="profilepic">
+			<img src="http://bcs.duapp.com/suweyablog/avatar.png">
+		</div>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">迷途小书童</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/suweya" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/suweya" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://plus.google.com/101772966739687843526/posts" title="google">google</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud">
+						<a href="/tags/Image/" style="font-size: NaNpx;">Image</a><a href="/tags/Markdown/" style="font-size: NaNpx;">Markdown</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					尘世间迷途小书童
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay"></div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://bcs.duapp.com/suweyablog/avatar.png">
+			</div>
+
+			<hgroup>
+			  <h1 class="header-author"><a href="/">迷途小书童</a></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/suweya" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/suweya" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://plus.google.com/101772966739687843526/posts" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <article id="post-android-test-sample" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/12/26/android-test-sample/" class="article-date">
+  	<time datetime="2014-12-26T01:30:42.000Z" itemprop="datePublished">12月 26 2014</time>
+</a>
+      
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Google&#39;s Testing Tools For Android --- Espresso
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Samples:<a href="https://github.com/googlesamples/android-testing/tree/master/espresso/BasicSample" target="_blank" rel="external">https://github.com/googlesamples/android-testing/tree/master/espresso/BasicSample</a></p>
+<h1 id="Basics">Basics</h1>
+<p>The Espresso API encourages test authors to think in terms of what a user might do while interacting with the application - locating UI elements and interacting with them. At the same time, the framework prevents direct access to activities and views of the application because holding on to these objects and operating on them off the UI thread is a major source of test flakiness. Thus, you will not see methods like getView and getCurrentActivity in the Espresso API. You can still safely operate on views by implementing your own ViewActions and ViewAssertions. </p>
+<a id="more"></a>
+
+<p>Here’s an overview of the main components of Espresso: </p>
+<ul>
+<li>Espresso – Entry point to interactions with views (via onView and onData). Also exposes APIs that are not necessarily tied to any view (e.g. pressBack). </li>
+<li>ViewMatchers – A collection of objects that implement Matcher&lt;? super View&gt; interface. You can pass one or more of these to the onView method to locate a view within the current view hierarchy. </li>
+<li>ViewActions – A collection of ViewActions that can be passed to the ViewInteraction.perform method (for example, click). </li>
+<li>ViewAssertions – A collection of ViewAssertions that can be passed the ViewInteraction.check method. Most of the time, you will use the matches assertion, which uses a View matcher to assert the state of the currently selected view. </li>
+</ul>
+<p>Example: </p>
+<pre><code><span class="function">onView</span>(<span class="function">withId</span>(R<span class="class">.id</span><span class="class">.my_view</span>))             <span class="comment">// withId(R.id.my_view) is a ViewMatcher  .perform(click())               // click() is a ViewAction  .check(matches(isDisplayed())); // matches(isDisplayed()) is a ViewAssertion</span>
+</code></pre><h2 id="Finding_a_view_with_onView">Finding a view with onView</h2>
+<p>In the vast majority of cases, the onView method takes a hamcrest matcher that is expected to match one — and only one — view within the current view hierarchy. Matchers are powerful and will be familiar to those who have used them with Mockito or Junit. If you are not familiar with hamcrest matchers, we suggest you start with a quick look at this presentation. </p>
+<p>Often the desired view has a unique R.id and a simple withId matcher will narrow down the view search. However, there are many legitimate cases when you cannot determine R.id at test development time. For example, the specific view may not have an R.id or the R.id is not unique. This can make normal instrumentation tests brittle and complicated to write because the normal way to access the view (with findViewById()) does not work. Thus, you may need to access private members of the Activity or Fragment holding the view or find a container with a known R.id and navigate to its content for the particular view. </p>
+<p>Espresso handles this problem cleanly by allowing you to narrow down the view using either existing ViewMatchers or your own custom ones. </p>
+<p>Finding a view by its R.id is as simple as: </p>
+<pre><code><span class="function">onView</span>(<span class="function">withId</span>(R<span class="class">.id</span><span class="class">.my_view</span>))
+</code></pre><p>Sometimes, R.id values are shared between multiple views. When this happens an attempt to use a particular R.id. gives you an AmbiguousViewMatcherException (for example). The exception message provides you with a text representation of the current view hierarchy, which you can search for and find the views that match the non-unique R.id: </p>
+<pre><code>java.lang.RuntimeException:com.google.android.apps.common.testing.ui.espresso.AmbiguousViewMatcherException:This matcher matches multiple views <span class="keyword">in</span> the hierarchy: (withId: is &lt;<span class="number">123456789</span>&gt;)
+... 
++-----&gt;SomeView{<span class="variable">id=</span><span class="number">123456789</span>, <span class="variable">res-name=</span>plus_one_standard_ann_button, <span class="variable">visibility=</span>VISIBLE, <span class="variable">width=</span><span class="number">523</span>, <span class="variable">height=</span><span class="number">48</span>, <span class="variable">has-focus=</span><span class="constant">false</span>, <span class="variable">has-focusable=</span><span class="constant">true</span>, <span class="variable">window-focus=</span><span class="constant">true</span>,<span class="variable">is-focused=</span><span class="constant">false</span>, <span class="variable">is-focusable=</span><span class="constant">false</span>, <span class="variable">enabled=</span><span class="constant">true</span>, <span class="variable">selected=</span><span class="constant">false</span>, <span class="variable">is-layout-requested=</span><span class="constant">false</span>, <span class="variable">text=</span>, <span class="variable">root-is-layout-requested=</span><span class="constant">false</span>, <span class="variable">x=</span><span class="number">0.0</span>, <span class="variable">y=</span><span class="number">625.0</span>, <span class="variable">child-count=</span><span class="number">1</span>}****MATCHES****|+------&gt;OtherView{<span class="variable">id=</span><span class="number">123456789</span>, <span class="variable">res-name=</span>plus_one_standard_ann_button, <span class="variable">visibility=</span>VISIBLE, <span class="variable">width=</span><span class="number">523</span>, <span class="variable">height=</span><span class="number">48</span>, <span class="variable">has-focus=</span><span class="constant">false</span>, <span class="variable">has-focusable=</span><span class="constant">true</span>, <span class="variable">window-focus=</span><span class="constant">true</span>,<span class="variable">is-focused=</span><span class="constant">false</span>, <span class="variable">is-focusable=</span><span class="constant">true</span>, <span class="variable">enabled=</span><span class="constant">true</span>, <span class="variable">selected=</span><span class="constant">false</span>, <span class="variable">is-layout-requested=</span><span class="constant">false</span>, <span class="variable">text=</span>Hello!, <span class="variable">root-is-layout-requested=</span><span class="constant">false</span>, <span class="variable">x=</span><span class="number">0.0</span>, <span class="variable">y=</span><span class="number">0.0</span>, <span class="variable">child-count=</span><span class="number">1</span>}****MATCHES****
+</code></pre><p>Looking through the various attributes of the views, you may find uniquely identifiable properties (in the example above, one of the views has the text “Hello!”). You can use this to narrow down your search by using combination matchers: </p>
+<pre><code><span class="function">onView</span>(<span class="function">allOf</span>(<span class="function">withId</span>(R<span class="class">.id</span><span class="class">.my_view</span>), <span class="function">withText</span>("Hello!")))
+</code></pre><p>You can also use not to reverse any of the matchers: </p>
+<pre><code><span class="function">onView</span>(<span class="function">allOf</span>(<span class="function">withId</span>(R<span class="class">.id</span><span class="class">.my_view</span>), <span class="function">not</span>(<span class="function">withText</span>("Unwanted"))))
+</code></pre><p>See ViewMatchers for the view matchers provided by Espresso. </p>
+<p>Note: In a well-behaved application, all views that a user can interact with should either contain descriptive text or have a content description (see Android accessibility guidelines). If you are not able to narrow down an onView search using ‘withText’ or ‘withContentDescription’, consider treating it as an accessibility bug. </p>
+<p>Note: Use the least descriptive matcher that finds the one view you’re looking for. Do not over-specify as this will force the framework to do more work than is necessary. For example, if a view is uniquely identifiable by its text, you need not specify that the view is also assignable from TextView. For a lot of views the R.id of the view should be sufficient. </p>
+<p>Note: If the target view is inside an AdapterView (such as ListView, GridView, Spinner) the onView method might not work and it is recommended to use the onData method instead. See Using onData with AdapterView controls for more information. </p>
+<p>Performing an action on a view¶</p>
+<p>When you have found a suitable matcher for the target view, it is possible to perform ViewActions on it using the perform method. </p>
+<p>For example, to click on the view: </p>
+<pre><code>onView(<span class="keyword">...</span>).perform(click());
+</code></pre><p>You can execute more than one action with one perform call: </p>
+<pre><code>onView(<span class="keyword">...</span>).perform(typeText(<span class="string">"Hello"</span>), click());
+</code></pre><p>If the view you are working with is located inside a ScrollView (vertical or horizontal), consider preceding actions that require the view to be displayed (like click and typeText) with scrollTo. This ensures that the view is displayed before proceeding to the other action: </p>
+<pre><code>onView(<span class="keyword">...</span>).perform(scrollTo(), click());
+</code></pre><p>Note: scrollTo will have no effect if the view is already displayed so you can safely use it in cases when the view is displayed due to larger screen size (for example, when your tests run on both smaller and larger screen resolutions). </p>
+<p>See ViewActions for the view actions provided by Espresso. </p>
+<h2 id="Checking_if_a_view_fulfills_an_assertion">Checking if a view fulfills an assertion</h2>
+<p>Assertions can be applied to the currently selected view with the check method. The most used assertion is the matches assertion, it uses a ViewMatcher to assert the state of the currently selected view. </p>
+<p>For example, to check that a view has the text “Hello!”: </p>
+<pre><code>onView(<span class="keyword">...</span>).check(matches(withText(<span class="string">"Hello!"</span>)));
+</code></pre><p>Note: Do not put “assertions” into the onView argument - instead, clearly specify what you are checking inside the check block. For example: </p>
+<p>If you want to assert that “Hello!” is content of the view, the following is considered bad practice: </p>
+<pre><code>onView(allOf(withId(<span class="keyword">...</span>), withText(<span class="string">"Hello!"</span>))).check(matches(isDisplayed())); 
+</code></pre><p>On the other hand, if you want to assert that a view with the text “Hello!” is visible - for example after a change of the views visibility flag - the code is fine. </p>
+<p>Note: Be sure to pay attention to the difference between asserting that a view is not displayed and asserting that a view is not present in the view hierarchy. </p>
+<h2 id="Get_started_with_a_simple_test_using_onView">Get started with a simple test using onView</h2>
+<p>This simple test demonstrates how to use onView. SimpleActivity contains a Button and a TextView. When the Button is clicked the content of the TextView changes to “Hello Espresso!”. Here’s how to test this with Espresso (or take a look at the full test code at BasicTest#testSimpleClickAndCheckText here). </p>
+<ol>
+<li>Click on the button</li>
+</ol>
+<p>The first step is to look for a property that helps to find the button. The button in the SimpleActivity has a unique R.id - perfect!<br>onView(withId(R.id.button_simple))<br>Now to perform the click: </p>
+<pre><code><span class="function">onView</span>(<span class="function">withId</span>(R<span class="class">.id</span><span class="class">.button_simple</span>))<span class="class">.perform</span>(<span class="function">click</span>());
+</code></pre><ol>
+<li>Check that the TextView now contains “Hello Espresso!”</li>
+</ol>
+<p>The TextView with the text to verify has a unique R.id too: </p>
+<pre><code><span class="function">onView</span>(<span class="function">withId</span>(R<span class="class">.id</span><span class="class">.text_simple</span>))
+</code></pre><p>Now to verify the content text: </p>
+<pre><code><span class="function">onView</span>(<span class="function">withId</span>(R<span class="class">.id</span><span class="class">.text_simple</span>))<span class="class">.check</span>(<span class="function">matches</span>(<span class="function">withText</span>("Hello Espresso!")));
+</code></pre><h1 id="Using_onData_with_AdapterView_controls_(ListView,_GridView,_…)">Using onData with AdapterView controls (ListView, GridView, …)</h1>
+<p>AdapterView is a special type of widget that loads its data dynamically from an Adapter. The most common example of an AdapterView is ListView. As opposed to static widgets like LinearLayout, only a subset of the AdapterView children may be loaded into the current view hierarchy and a simple onView search would not find views that are not currently loaded. Espresso handles this by providing a separate onData interface which is able to first load the adapter item in question (bringing it into focus) prior to operating on it or any of its children. </p>
+<p>Note: You may choose to bypass the “onData” loading action for items in adapter views that are initially displayed on screen because they are already loaded. However, it is safer to always use onData. </p>
+<p>Warning: Custom implementations of AdapterView can have problems with the onData method, if they break inheritance contracts (particularly the getItem API). In such cases, the best course of action is to refactor your application code. If you cannot do so, you can implement a matching custom AdapterViewProtocol. Take a look at the default AdapterViewProtocols provided by Espresso for more information. </p>
+<h2 id="Get_started_with_a_simple_test_using_onData">Get started with a simple test using onData</h2>
+<p>This simple test demonstrates how to use onData. SimpleActivity contains a Spinner with a few items - Strings that represent types of coffee beverages. When an item is selected, there is a TextView that changes to “One %s a day!” where %s is the selected item. The goal of this test is to open the Spinner, select a specific item and then verify that the TextView contains the item. As the Spinner class is based on AdapterView it is recommended to use onData instead of onView for matching the item. See BasicTest#testClickOnSpinnerItemAmericano for the full sample code of the test. </p>
+<ol>
+<li><p>Click on the Spinner to open the item selection</p>
+<p> onView(withId(R.id.spinner_simple)).perform(click());</p>
+</li>
+<li><p>Click on the item “Americano”</p>
+</li>
+</ol>
+<p>For the item selection the Spinner creates a ListView with its contents - this can be very long and the element not contributed to the view hierarchy - by using onData we force our desired element into the view hierarchy. The items in the Spinner are Strings, we want to match an item that is a String and is equal to the String “Americano”:</p>
+<pre><code><span class="function">onData</span>(<span class="function">allOf</span>(<span class="function">is</span>(<span class="function">instanceOf</span>(String<span class="class">.class</span>)), <span class="function">is</span>("Americano")))  <span class="class">.perform</span>(<span class="function">click</span>());
+</code></pre><ol>
+<li><p>Verify that the TextView contains the String “Americano”</p>
+<p> onView(withId(R.id.spinnertext_simple))  .check(matches(withText(containsString(“Americano”))));</p>
+</li>
+</ol>
+<p>For more information, check out the Advanced Samples and let us know if you notice any documentation gaps or have any suggestions. </p>
+<h1 id="Debugging">Debugging</h1>
+<p>Espresso provides useful debugging information when a test fails:<br>•Logs all view actions to logcat </p>
+<p>For example:<br>  ViewInteraction: Performing ‘single click’ action on view with text: Espresso•Prints the view hierarchy in the exception string when onView fails </p>
+<p>If onView does not find the target view, a NoMatchingViewException is thrown. You can examine the view hierarchy in the exception string to analyze why the matcher did not match any views. If onView finds multiple views that match the given matcher, an AmbiguousViewMatcherException is thrown. The view hierarchy is printed and all views that were matched are marked with the MATCHES label: </p>
+<pre><code>java.lang.RuntimeException:com.google.android.apps.common.testing.ui.espresso.AmbiguousViewMatcherException:This matcher matches multiple views <span class="keyword">in</span> the hierarchy: (withId: is &lt;<span class="number">123456789</span>&gt;)... +-----&gt;SomeView{<span class="variable">id=</span><span class="number">123456789</span>, <span class="variable">res-name=</span>plus_one_standard_ann_button, <span class="variable">visibility=</span>VISIBLE, <span class="variable">width=</span><span class="number">523</span>, <span class="variable">height=</span><span class="number">48</span>, <span class="variable">has-focus=</span><span class="constant">false</span>, <span class="variable">has-focusable=</span><span class="constant">true</span>, <span class="variable">window-focus=</span><span class="constant">true</span>,<span class="variable">is-focused=</span><span class="constant">false</span>, <span class="variable">is-focusable=</span><span class="constant">false</span>, <span class="variable">enabled=</span><span class="constant">true</span>, <span class="variable">selected=</span><span class="constant">false</span>, <span class="variable">is-layout-requested=</span><span class="constant">false</span>, <span class="variable">text=</span>, <span class="variable">root-is-layout-requested=</span><span class="constant">false</span>, <span class="variable">x=</span><span class="number">0.0</span>, <span class="variable">y=</span><span class="number">625.0</span>, <span class="variable">child-count=</span><span class="number">1</span>}****MATCHES****|+------&gt;OtherView{<span class="variable">id=</span><span class="number">123456789</span>, <span class="variable">res-name=</span>plus_one_standard_ann_button, <span class="variable">visibility=</span>VISIBLE, <span class="variable">width=</span><span class="number">523</span>, <span class="variable">height=</span><span class="number">48</span>, <span class="variable">has-focus=</span><span class="constant">false</span>, <span class="variable">has-focusable=</span><span class="constant">true</span>, <span class="variable">window-focus=</span><span class="constant">true</span>,<span class="variable">is-focused=</span><span class="constant">false</span>, <span class="variable">is-focusable=</span><span class="constant">true</span>, <span class="variable">enabled=</span><span class="constant">true</span>, <span class="variable">selected=</span><span class="constant">false</span>, <span class="variable">is-layout-requested=</span><span class="constant">false</span>, <span class="variable">text=</span>Hello!, <span class="variable">root-is-layout-requested=</span><span class="constant">false</span>, <span class="variable">x=</span><span class="number">0.0</span>, <span class="variable">y=</span><span class="number">0.0</span>, <span class="variable">child-count=</span><span class="number">1</span>}****MATCHES****
+</code></pre><p>When dealing with a complicated view hierarchy or unexpected behavior of widgets it is always helpful to use the Android View Hierarchy Viewer for an explanation. •Warns users about presence of AdapterView widgets </p>
+<p>When an onView operation throws a NoMatchingViewException and AdapterView widgets are present in the view hierarchy, the most common solution is to use onData. The exception message will include a warning with a list of the adapter views. You may use this information to invoke onData to load the target view. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/30/android-protection-level/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          android permission protection level
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/25/android-https/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">﻿Security with HTTPS and SSL</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 迷途小书童
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  <script src="/js/main.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>
