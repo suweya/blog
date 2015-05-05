@@ -164,6 +164,61 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-activity-anim" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/05/05/activity-anim/" class="article-date">
+  	<time datetime="2015-05-05T09:51:16.000Z" itemprop="datePublished">5月 5 2015</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/05/activity-anim/">Window Activity Fragment 切换动画</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原来设置Activity启动结束的动画都是通过overridePendingTransition();方法来实现；<br>今天在SatckOverFlow上看到在Style中配置的，更简便。</p>
+<p>activityOpenEnterAnimation start时的动画</p>
+<p>activityOpenExitAnimation  start时另一个页面退出的动画</p>
+<p>activityCloseEnterAnimation  finish时上一个元素进入的动画</p>
+<p>activityCloseExitAnimation  finish时退出的动画</p>
+<p><!-- Standard animations for a full-screen window or activity. --><br>    <style name="Animation.Activity"><br>        <item name="activityOpenEnterAnimation">@anim/activity_open_enter</item><br>        <item name="activityOpenExitAnimation">@anim/activity_open_exit</item><br>        <item name="activityCloseEnterAnimation">@anim/activity_close_enter</item><br>        <item name="activityCloseExitAnimation">@anim/activity_close_exit</item><br>        <item name="taskOpenEnterAnimation">@anim/task_open_enter</item><br>        <item name="taskOpenExitAnimation">@anim/task_open_exit</item><br>        <item name="launchTaskBehindTargetAnimation">@anim/launch_task_behind_target</item><br>        <item name="launchTaskBehindSourceAnimation">@anim/launch_task_behind_source</item><br>        <item name="taskCloseEnterAnimation">@anim/task_close_enter</item><br>        <item name="taskCloseExitAnimation">@anim/task_close_exit</item><br>        <item name="taskToFrontEnterAnimation">@anim/task_open_enter</item><br>        <item name="taskToFrontExitAnimation">@anim/task_open_exit</item><br>        <item name="taskToBackEnterAnimation">@anim/task_close_enter</item><br>        <item name="taskToBackExitAnimation">@anim/task_close_exit</item><br>        <item name="wallpaperOpenEnterAnimation">@anim/wallpaper_open_enter</item><br>        <item name="wallpaperOpenExitAnimation">@anim/wallpaper_open_exit</item><br>        <item name="wallpaperCloseEnterAnimation">@anim/wallpaper_close_enter</item><br>        <item name="wallpaperCloseExitAnimation">@anim/wallpaper_close_exit</item><br>        <item name="wallpaperIntraOpenEnterAnimation">@anim/wallpaper_intra_open_enter</item><br>        <item name="wallpaperIntraOpenExitAnimation">@anim/wallpaper_intra_open_exit</item><br>        <item name="wallpaperIntraCloseEnterAnimation">@anim/wallpaper_intra_close_enter</item><br>        <item name="wallpaperIntraCloseExitAnimation">@anim/wallpaper_intra_close_exit</item><br>        <item name="fragmentOpenEnterAnimation">@animator/fragment_open_enter</item><br>        <item name="fragmentOpenExitAnimation">@animator/fragment_open_exit</item><br>        <item name="fragmentCloseEnterAnimation">@animator/fragment_close_enter</item><br>        <item name="fragmentCloseExitAnimation">@animator/fragment_close_exit</item><br>        <item name="fragmentFadeEnterAnimation">@animator/fragment_fade_enter</item><br>        <item name="fragmentFadeExitAnimation">@animator/fragment_fade_exit</item><br>    </style></p>
+<pre><code>http<span class="variable">s:</span>//github.<span class="keyword">com</span>/android/platform_frameworks_base/blob/master/core/<span class="keyword">res</span>/<span class="keyword">res</span>/<span class="built_in">values</span>/styles.xml
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-2015-Plan" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
