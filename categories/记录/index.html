@@ -162,21 +162,72 @@
 </nav>
       
   
-    <% if (!index && theme.duoshuo && post.comments){ %>
-<%- partial('post/duoshuo', {
-    key: post.slug,
-    title: post.title,
-    url: config.url+url_for(post.path)
-  }) %>
-<% } %>
-
-<% if (!index && post.comments && config.disqus_shortname){ %>
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <article id="post-markdown-syntax" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/12/08/markdown-syntax/" class="article-date">
+  	<time datetime="2014-12-08T01:09:29.000Z" itemprop="datePublished">12月 8 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/记录/">记录</a>
   </div>
-</section>
-<% } %>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/08/markdown-syntax/">Markdown语法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>区块引用使用’&gt;’，效果如下</li>
+</ul>
+<blockquote>
+<p>This is a blockquote.<br>This is the second paragraph in the blockquote.</p>
+</blockquote>
+<ul>
+<li>Markdown 使用星号和底线来标记需要强调的区段。(#”content”, #<em>content</em>, #””content””, #<strong> </strong>)</li>
+</ul>
+<blockquote>
+<p>Some of these words <em>are emphasized</em>.<br><br>Some of these words <em>are emphasized also</em>.<br><br>Use two asterisks for <strong>strong emphasis</strong>.<br><br>Or, if you prefer, <strong>use two underscores instead</strong>.</p>
+</blockquote>
+
+        
+          <p class="article-more-link">
+            <a href="/2014/12/08/markdown-syntax/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
 
   
   

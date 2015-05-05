@@ -163,21 +163,500 @@ The primary class to use is Gson which you can just create by calling new Gson()
 		</header>				
 	</div>
 </nav>
-      <% if (!index && theme.duoshuo && post.comments){ %>
-<%- partial('post/duoshuo', {
-    key: post.slug,
-    title: post.title,
-    url: config.url+url_for(post.path)
-  }) %>
-<% } %>
+      <article id="post-gson-usage" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/01/04/gson-usage/" class="article-date">
+  	<time datetime="2015-01-04T07:15:32.000Z" itemprop="datePublished">1月 4 2015</time>
+</a>
+      
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Gson usage
+    </h1>
+  
 
-<% if (!index && post.comments && config.disqus_shortname){ %>
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Using_Gson">Using Gson</h1>
+<p>The primary class to use is Gson which you can just create by calling new Gson(). There is also a class GsonBuilder available that can be used to create a Gson instance with various settings like version control and so on. </p>
+<p>The Gson instance does not maintain any state while invoking Json operations. So, you are free to reuse the same object for multiple Json serialization and deserialization operations.<br><a id="more"></a></p>
+<h2 id="Primitives_Examples">Primitives Examples</h2>
+<pre><code>(Serialization)
+
+Gson gson = <span class="keyword">new</span> Gson();
+gson.toJson(<span class="number">1</span>);            ==&gt; prints <span class="number">1</span>
+gson.toJson(<span class="string">"abcd"</span>);       ==&gt; prints <span class="string">"abcd"</span>
+gson.toJson(<span class="keyword">new</span> Long(<span class="number">10</span>)); ==&gt; prints <span class="number">10</span>
+<span class="built_in">int</span>[] values = { <span class="number">1</span> };
+gson.toJson(values);       ==&gt; prints [<span class="number">1</span>]
+
+
+(Deserialization)
+
+<span class="built_in">int</span> one = gson.fromJson(<span class="string">"1"</span>, <span class="built_in">int</span>.<span class="keyword">class</span>);
+Integer one = gson.fromJson(<span class="string">"1"</span>, Integer.<span class="keyword">class</span>);
+Long one = gson.fromJson(<span class="string">"1"</span>, Long.<span class="keyword">class</span>);
+Boolean <span class="literal">false</span> = gson.fromJson(<span class="string">"false"</span>, Boolean.<span class="keyword">class</span>);
+<span class="built_in">String</span> str = gson.fromJson(<span class="string">"\"</span>abc\<span class="string">""</span>, <span class="built_in">String</span>.<span class="keyword">class</span>);
+<span class="built_in">String</span> [] anotherStr = gson.fromJson(<span class="string">"[\"</span>abc\<span class="string">"]"</span>, <span class="built_in">String</span>[].<span class="keyword">class</span>);
+</code></pre><h2 id="Object_Examples">Object Examples</h2>
+<pre><code>class BagOfPrimitives {
+  <span class="keyword">private</span> <span class="keyword">int</span> value1 = <span class="number">1</span>;
+  <span class="keyword">private</span> String value2 = <span class="string">"abc"</span>;
+  <span class="keyword">private</span> transient <span class="keyword">int</span> value3 = <span class="number">3</span>;
+  BagOfPrimitives() {
+    <span class="comment">// no-args constructor</span>
+  }
+}
+
+(Serialization)
+BagOfPrimitives obj = <span class="keyword">new</span> BagOfPrimitives();
+Gson gson = <span class="keyword">new</span> Gson();
+String json = gson.toJson(obj);  
+==&gt; json <span class="keyword">is</span> {<span class="string">"value1"</span>:<span class="number">1</span>,<span class="string">"value2"</span>:<span class="string">"abc"</span>}
+</code></pre><ul>
+<li>Note that you can not serialize objects with circular references since that will result in infinite recursion. </li>
+</ul>
+<p>(Deserialization)</p>
+<pre><code>BagOfPrimitives obj2 = gson.fromJson(json, BagOfPrimitives.class);   
+=<span class="ruby"><span class="output"><span class="status">=&gt;</span> obj2 is just like obj</span></span>
+</code></pre><h2 id="Finer_Points_with_Objects">Finer Points with Objects</h2>
+<ul>
+<li><p>It is perfectly fine (and recommended) to use private fields </p>
+</li>
+<li><p>There is no need to use any annotations to indicate a field is to be included for serialization and deserialization. All fields in the current class (and from all super classes) are included by default. </p>
+</li>
+<li><p>If a field is marked transient, (by default) it is ignored and not included in the JSON serialization or deserialization.(transient 不需要序列化)</p>
+</li>
+<li><p>This implementation handles nulls correctly. While serialization, a null field is skipped from the output. While deserialization, a missing entry in JSON results in setting the corresponding field in the object to null</p>
+</li>
+<li><p>If a field is synthetic, it is ignored and not included in JSON serialization or deserialization</p>
+</li>
+<li><p>Fields corresponding to the outer classes in  inner classes, anonymous classes, and local classes are ignored and not included in serialization or deserialization</p>
+</li>
+</ul>
+<h2 id="Nested_Classes_(including_Inner_Classes)">Nested Classes (including Inner Classes)</h2>
+<p>Gson can serialize static nested classes quite easily. </p>
+<p>Gson can also deserialize static nested classes. However, Gson can not automatically deserialize the pure inner classes since their no-args constructor also need a reference to the containing Object which is not available at the time of deserialization. You can address this problem by either making the inner class static or by providing a custom InstanceCreator for it. Here is an example: </p>
+<pre><code><span class="keyword">public</span> <span class="keyword">class</span> A { 
+  <span class="keyword">public</span> String a; 
+
+  class B { 
+
+    <span class="keyword">public</span> String b; 
+
+    <span class="keyword">public</span> <span class="title">B</span>() {
+      <span class="comment">// No args constructor for B</span>
+    }
+  } 
+}
+</code></pre><p>NOTE: The above class B can not (by default) be serialized with Gson.</p>
+<p>Gson can not deserialize {“b”:”abc”} into an instance of B since the class B is an inner class. if it was defined as static class B then Gson would have been able to deserialize the string. Another solution is to write a custom instance creator for B. </p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InstanceCreatorForB</span> <span class="keyword">implements</span> <span class="title">InstanceCreator</span>&lt;<span class="title">A</span>.<span class="title">B</span>&gt; </span>{
+
+  <span class="keyword">private</span> <span class="keyword">final</span> A a;
+
+  <span class="keyword">public</span> <span class="title">InstanceCreatorForB</span>(A a)  {
+
+    <span class="keyword">this</span>.a = a;
+
+  }
+
+  <span class="keyword">public</span> A.B <span class="title">createInstance</span>(Type type) {
+
+    <span class="keyword">return</span> a.<span class="keyword">new</span> B();
+
+  }
+
+}
+</code></pre><p>The above is possible, but not recommended.</p>
+<h2 id="Array_Examples">Array Examples</h2>
+<pre><code>Gson gson = <span class="keyword">new</span> Gson();
+<span class="built_in">int</span>[] ints = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>};
+String[] strings = {<span class="string">"abc"</span>, <span class="string">"def"</span>, <span class="string">"ghi"</span>};
+
+(Serialization)
+gson.toJson(ints);     ==&gt; prints [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]
+
+gson.toJson(strings);  ==&gt; prints [<span class="string">"abc"</span>, <span class="string">"def"</span>, <span class="string">"ghi"</span>]
+
+(Deserialization)
+<span class="built_in">int</span>[] ints2 = gson.fromJson(<span class="string">"[1,2,3,4,5]"</span>, <span class="built_in">int</span>[].<span class="keyword">class</span>); 
+==&gt; ints2 will be same <span class="keyword">as</span> ints
+</code></pre><p>We also support multi-dimensional arrays, with arbitrarily complex element types(支持多维数组，任意复杂的单元类型)</p>
+<h2 id="Collections_Examples">Collections Examples</h2>
+<pre><code><span class="constant">Gson</span> gson = new <span class="constant">Gson</span>();
+<span class="input"><span class="prompt">Collection&lt;Integer&gt;</span> ints = <span class="constant">Lists</span>.immutableList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);
+
+(<span class="constant">Serialization</span>)</span>
+<span class="constant">String</span> json = gson.toJson(ints); ==&gt; json is [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]
+
+(<span class="constant">Deserialization</span>)
+<span class="constant">Type</span> collectionType = new <span class="constant">TypeToken</span>&lt;<span class="constant">Collection</span>&lt;<span class="constant">Integer</span>&gt;&gt;(){}.getType();
+<span class="input"><span class="prompt">Collection&lt;Integer&gt;</span> ints2 = gson.fromJson(json, collectionType);
+ints2 is same as ints</span>
+</code></pre><p>Fairly hideous: note how we define the type of collection<br>Unfortunately, no way to get around this in Java</p>
+<p>Collections Limitations</p>
+<ul>
+<li>Can serialize collection of arbitrary objects but can not deserialize from it<br>◦Because there is no way for the user to indicate the type of the resulting object</li>
+<li>While deserializing, Collection must be of a specific generic type<br>All of this makes sense, and is rarely a problem when following good Java coding practices</li>
+</ul>
+<h2 id="Serializing_and_Deserializing_Generic_Types">Serializing and Deserializing Generic Types</h2>
+<p>When you call toJson(obj), Gson calls obj.getClass() to get information on the fields to serialize. Similarly, you can typically pass MyClass.class object in the fromJson(json, MyClass.class) method. This works fine if the object is a non-generic type. However, if the object is of a generic type, then the Generic type information is lost because of Java Type Erasure. Here is an example illustrating the point: </p>
+<pre><code><span class="input"><span class="prompt">class Foo&lt;T&gt;</span> {
+  <span class="constant">T</span> value;
+
+}</span>
+
+<span class="constant">Gson</span> gson = new <span class="constant">Gson</span>();
+
+<span class="input"><span class="prompt">Foo&lt;Bar&gt;</span> foo = new <span class="constant">Foo</span>&lt;<span class="constant">Bar</span>&gt;();
+gson.toJson(foo); <span class="regexp">//</span> <span class="constant">May</span> not serialize foo.value correctly</span>
+
+gson.fromJson(json, foo.getClass()); <span class="regexp">//</span> <span class="constant">Fails</span> to deserialize foo.value as <span class="constant">Bar</span>
+</code></pre><p>The above code fails to interpret value as type Bar because Gson invokes list.getClass() to get its class information, but this method returns a raw class, Foo.class. This means that Gson has no way of knowing that this is an object of type Foo<bar>, and not just plain Foo. </bar></p>
+<p>You can solve this problem by specifying the correct parameterized type for your generic type. You can do this by using the TypeToken class. </p>
+<pre><code><span class="keyword">Type</span> fooType = <span class="keyword">new</span> TypeToken&lt;Foo&lt;Bar&gt;&gt;() <span class="comment">{}</span>.getType();
+gson.toJson(foo, fooType);
+
+gson.fromJson(json, fooType);
+</code></pre><p>The idiom used to get fooType actually defines an anonymous local inner class containing a method getType() that returns the fully parameterized type.</p>
+<h2 id="Serializing_and_Deserializing_Collection_with_Objects_of_Arbitrary_Types">Serializing and Deserializing Collection with Objects of Arbitrary Types</h2>
+<p>Sometimes you are dealing with JSON array that contains mixed types. For example:</p>
+<pre><code>[<span class="string">'hello'</span>,<span class="number">5</span>,{name:<span class="string">'GREETINGS'</span>,<span class="built_in">source</span>:<span class="string">'guest'</span>}]
+</code></pre><p>The equivalent Collection containing this is:</p>
+<pre><code>Collection collection = <span class="keyword">new</span> ArrayList();
+
+collection.<span class="built_in">add</span>(<span class="string">"hello"</span>);
+
+collection.<span class="built_in">add</span>(<span class="number">5</span>);
+
+collection.<span class="built_in">add</span>(<span class="keyword">new</span> Event(<span class="string">"GREETINGS"</span>, <span class="string">"guest"</span>));
+</code></pre><p>Where the Event class is defined as:</p>
+<pre><code><span class="keyword">class</span> Event {
+
+  <span class="keyword">private</span> String name;
+
+  <span class="keyword">private</span> String <span class="keyword">source</span>;
+
+  <span class="keyword">private</span> Event(String name, String <span class="keyword">source</span>) {
+
+    <span class="keyword">this</span>.name = name;
+
+    <span class="keyword">this</span>.<span class="keyword">source</span> = <span class="keyword">source</span>;
+
+  }
+
+}
+</code></pre><p>You can serialize the collection with Gson without doing anything specific: toJson(collection) would write out the desired output.</p>
+<p>However, deserialization with fromJson(json, Collection.class) will not work since Gson has no way of knowing how to map the input to the types. Gson requires that you provide a genericised version of collection type in fromJson. So, you have three options:</p>
+<ul>
+<li><p>Option 1: Use Gson’s parser API (low-level streaming parser or the DOM parser JsonParser) to parse the array elements and then  use Gson.fromJson() on each of the array elements.This is the <strong>preferred approach</strong>. Here is an example that demonstrates how to do this.</p>
+</li>
+<li><p>Option 2: Register a type adapter for Collection.class that looks at each of the array members and maps them to appropriate objects. The disadvantage of this approach is that it will screw up deserialization of other collection types in Gson.</p>
+</li>
+<li><p>Option 3: Register a type adapter for MyCollectionMemberType and use fromJson with Collection<mycollectionmembertype></mycollectionmembertype></p>
+</li>
+</ul>
+<p>This approach is practical only if the array appears as a top-level element or if you can change the field type holding the collection to be of type Collection<mycollectionmembertyep>. </mycollectionmembertyep></p>
+<h2 id="Built-in_Serializers_and_Deserializers">Built-in Serializers and Deserializers</h2>
+<p>Gson has built-in serializers and deserializers for commonly used classes whose default representation may be inappropriate.<br>Here is a list of such classes: </p>
+<ul>
+<li>1.java.net.URL to match it with strings like “<a href="http://code.google.com/p/google-gson/" target="_blank" rel="external">http://code.google.com/p/google-gson/</a>“.</li>
+<li>2.java.net.URI to match it with strings like “/p/google-gson/“.<br>You can also find source-code for some commonly used classes such as JodaTime at this page. </li>
+</ul>
+<h2 id="Custom_Serialization_and_Deserialization">Custom Serialization and Deserialization</h2>
+<p>Sometimes default representation is not what you want. This is often the case when dealing with library classes (DateTime, etc).<br>Gson allows you to register your own custom serializers and deserializers. This is done by defining two parts: </p>
+<ul>
+<li><p>Json Serialiers: Need to define custom serialization for an object</p>
+</li>
+<li><p>Json Deserializers: Needed to define custom deserialization for a type</p>
+</li>
+<li><p>Instance Creators: Not needed if no-args constructor is available or a deserializer is registered</p>
+<p>  GsonBuilder gson = new GsonBuilder();<br>  gson.registerTypeAdapter(MyType2.class, new MyTypeAdapter());<br>   gson.registerTypeAdapter(MyType.class, new MySerializer());<br>  gson.registerTypeAdapter(MyType.class, new MyDeserializer());<br>  gson.registerTypeAdapter(MyType.class, new MyInstanceCreator());</p>
+</li>
+</ul>
+<p>registerTypeAdapter call checks if the type adapter implements more than one of these interfaces and register it for all of them.</p>
+<p>Writing a Serializer<br>Here is an example of how to write a custom serializer for JodaTime DateTime class. </p>
+<pre><code><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">DateTimeSerializer</span> <span class="keyword">implements</span> <span class="title">JsonSerializer</span>&lt;<span class="title">DateTime</span>&gt; </span>{
+  <span class="keyword">public</span> JsonElement <span class="title">serialize</span>(DateTime src, Type typeOfSrc, JsonSerializationContext context) {
+    <span class="keyword">return</span> <span class="keyword">new</span> JsonPrimitive(src.toString());
+  }
+}
+</code></pre><p>Gson calls toJson() when it runs into a DateTime object during serialization.</p>
+<p>Writing a Deserializer<br>Here is an example of how to write a custom deserializer for JodaTime DateTime class. </p>
+<pre><code><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">DateTimeDeserializer</span> <span class="keyword">implements</span> <span class="title">JsonDeserializer</span>&lt;<span class="title">DateTime</span>&gt; </span>{
+  <span class="keyword">public</span> DateTime <span class="title">deserialize</span>(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+      <span class="keyword">throws</span> JsonParseException {
+    <span class="keyword">return</span> <span class="keyword">new</span> DateTime(json.getAsJsonPrimitive().getAsString());
+  }
+}
+</code></pre><p>Gson calls fromJson() when it needs to deserialize a JSON string fragment into a DateTime object</p>
+<p>Finer points with Serializers and Deserializers</p>
+<p>Often you want to register a single handler for all generic types corresponding to a raw type•For example, suppose you have an “Id” class for Id representation/translation (i.e. an internal vs. external representation).</p>
+<ul>
+<li>Id<t> type that has same serialization for all generic types. Essentially write out the id value</t></li>
+<li>Deserialization is very similar but not exactly the same. Need to call “new Id(Class<t>, String)” which returns an instance of Id<t></t></t></li>
+</ul>
+<p>Gson supports registering a single handler for this. You can also register a specific handler for a specific generic type (say Id<requiresspecialhandling> needed special handling).</requiresspecialhandling></p>
+<p>The Type parameter for the toJson and fromJson contains the generic type information to help you write a single handler for all generic types corresponding to the same raw type</p>
+<h2 id="Writing_an_Instance_Creator">Writing an Instance Creator</h2>
+<p>While deserializing an Object, Gson needs to create a default instance of the class<br>Well-behaved  classes that are meant for serialization and deserialization should have a no-argument constructor•Doesn’t matter whether public or private</p>
+<p>Typically, Instance Creators are needed when you are dealing with a library class that does NOT define a no-argument constructor</p>
+<p>Instance Creator Example</p>
+<pre><code><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MoneyInstanceCreator</span> <span class="keyword">implements</span> <span class="title">InstanceCreator</span>&lt;<span class="title">Money</span>&gt; </span>{
+  <span class="keyword">public</span> Money <span class="title">createInstance</span>(Type type) {
+    <span class="keyword">return</span> <span class="keyword">new</span> Money(<span class="string">"1000000"</span>, CurrencyCode.USD);
+  }
+}
+</code></pre><p>Type could be of a corresponding generic type•Very useful to invoke constructors which need specific generic type information</p>
+<ul>
+<li>For example, if the Id class stores the class for which the Id is being created</li>
+</ul>
+<p>InstanceCreator for a Parameterized Type<br>Sometimes that the type that you are trying to instantiate is a parameterized type. Generally, this is not a problem since the actual instance is of raw type. Here is an example: </p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">MyList</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">ArrayList</span>&lt;<span class="title">T</span>&gt; </span>{
+}
+
+<span class="class"><span class="keyword">class</span> <span class="title">MyListInstanceCreator</span> <span class="keyword">implements</span> <span class="title">InstanceCreator</span>&lt;<span class="title">MyList</span>&lt;?&gt;&gt; </span>{
+    @SuppressWarnings(<span class="string">"unchecked"</span>)
+  <span class="keyword">public</span> MyList<span class="preprocessor">&lt;?</span>&gt; createInstance(Type type) {
+    <span class="comment">// No need to use a parameterized list since the actual instance will have the raw type anyway.</span>
+    <span class="keyword">return</span> <span class="keyword">new</span> MyList();
+  }
+}
+</code></pre><p>However, sometimes you do need to create instance based on the actual parameterized type. In this case, you can use the type parameter being passed to the createInstance method. Here is an example: </p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Id</span>&lt;<span class="title">T</span>&gt; </span>{
+  <span class="keyword">private</span> <span class="keyword">final</span> Class&lt;T&gt; classOfId;
+  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> value;
+  <span class="keyword">public</span> Id(Class&lt;T&gt; classOfId, <span class="keyword">long</span> value) {
+    <span class="keyword">this</span>.classOfId = classOfId;
+    <span class="keyword">this</span>.value = value;
+  }
+}
+
+<span class="class"><span class="keyword">class</span> <span class="title">IdInstanceCreator</span> <span class="inheritance"><span class="keyword">implements</span></span> <span class="title">InstanceCreator</span>&lt;<span class="title">Id</span>&lt;?&gt;&gt; </span>{
+  <span class="keyword">public</span> Id&lt;?&gt; createInstance(Type type) {
+    Type[] typeParameters = ((ParameterizedType)type).getActualTypeArguments();
+    Type idType = typeParameters[<span class="number">0</span>]; <span class="comment">// Id has only one parameterized type T</span>
+    <span class="keyword">return</span> Id.get((Class)idType, <span class="number">0</span>L);
+  }
+}
+</code></pre><p>In the above example, an instance of the Id class can not be created without actually passing in the actual type for the parameterized type. We solve this problem by using the passed method parameter, type. The type object in this case is the Java parameterized type representation of Id<foo> where the actual instance should be bound to Id<foo>. Since Id class has just one parameterized type parameter, T, we use the zeroth element of the type array returned by getActualTypeArgument() which will hold Foo.class in this case.</foo></foo></p>
+<h2 id="Compact_Vs-_Pretty_Printing_for_JSON_Output_Format">Compact Vs. Pretty Printing for JSON Output Format</h2>
+<p>The default JSON output that is provide by Gson is a compact JSON format.  This means that there will not be any whitespace in the output JSON structure.  Therefore, there will be no whitespace between field names and its value, object fields, and objects within arrays in the JSON output.  As well, “null” fields will be ignored in the output (NOTE: null values will still be included in collections/arrays of objects).  See the Null Object Support section for information on configure Gson to output all null values.</p>
+<p>If you like to use the Pretty Print feature, you must configure your Gson instance using the GsonBuilder.  The JsonFormatter  is not exposed through our public API, so the client is unable to configure the default print settings/margins for the JSON output.  For now, we only provide a default JsonPrintFormatter that has default line length of 80 character, 2 character indentation, and 4 character right margin.</p>
+<p>The following is an example shows how to configure a Gson instance to use the default JsonPrintFormatter instead of the JsonCompactFormatter:</p>
+<pre><code><span class="constant">Gson gson</span> = new GsonBuilder().setPrettyPrinting().create();
+<span class="constant">String jsonOutput</span> = gson.toJson(someObject);
+</code></pre><h2 id="Null_Object_Support">Null Object Support</h2>
+<p>The default behaviour that is implemented in Gson is that null object fields are ignored.  This allows for a more compact output format; however, the client must define a default value for these fields as the JSON format is converted back into its Java.</p>
+<p>Here’s how you would configure a Gson instance to output null:<br>Gson gson = new GsonBuilder().serializeNulls().create();</p>
+<p>NOTE: when serializing nulls with Gson, it will add a JsonNull element to the JsonElement structure.  Therefore, this object can be used in custom serialization/deserialization.</p>
+<p>Here’s an example:</p>
+<pre><code><span class="keyword">public</span> <span class="keyword">class</span> Foo {
+  <span class="keyword">private</span> final String s;
+  <span class="keyword">private</span> final <span class="keyword">int</span> i;
+
+  <span class="keyword">public</span> <span class="title">Foo</span>() {
+    <span class="keyword">this</span>(<span class="keyword">null</span>, <span class="number">5</span>);
+  }
+
+  <span class="keyword">public</span> <span class="title">Foo</span>(String s, <span class="keyword">int</span> i) {
+    <span class="keyword">this</span>.s = s;
+    <span class="keyword">this</span>.i = i;
+  }
+}
+
+Gson gson = <span class="keyword">new</span> GsonBuilder().serializeNulls().create();
+Foo foo = <span class="keyword">new</span> Foo();
+String json = gson.toJson(foo);
+System.<span class="keyword">out</span>.println(json);
+
+json = gson.toJson(<span class="keyword">null</span>);
+System.<span class="keyword">out</span>.println(json);
+
+======== OUTPUT ========
+{<span class="string">"s"</span>:<span class="keyword">null</span>,<span class="string">"i"</span>:<span class="number">5</span>}
+<span class="keyword">null</span>
+</code></pre><p>Versioning Support<br>Multiple versions of the same object can be maintained by using @Since annotation. This annotation can be used on Classes, Fields and, in a future release, Methods.  In order to leverage this feature, you must configure your Gson instance to ignore any field/object that is greater than some version number.  If no version is set on the Gson instance then it will serialize and deserialize all fields and classes regardless of the version.</p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VersionedClass</span> </span>{
+  <span class="annotation">@Since</span>(<span class="number">1.1</span>) <span class="keyword">private</span> <span class="keyword">final</span> String newerField;
+  <span class="annotation">@Since</span>(<span class="number">1.0</span>) <span class="keyword">private</span> <span class="keyword">final</span> String newField;
+  <span class="keyword">private</span> <span class="keyword">final</span> String field;
+
+  <span class="keyword">public</span> <span class="title">VersionedClass</span>() {
+    <span class="keyword">this</span>.newerField = <span class="string">"newer"</span>;
+    <span class="keyword">this</span>.newField = <span class="string">"new"</span>;
+    <span class="keyword">this</span>.field = <span class="string">"old"</span>;
+  }
+}
+
+VersionedClass versionedObject = <span class="keyword">new</span> VersionedClass();
+Gson gson = <span class="keyword">new</span> GsonBuilder().setVersion(<span class="number">1.0</span>).create();
+ String jsonOutput = gson.toJson(someObject);
+System.out.println(jsonOutput);
+System.out.println();
+
+gson = <span class="keyword">new</span> Gson();
+jsonOutput = gson.toJson(someObject);
+ System.out.println(jsonOutput);
+
+======== OUTPUT ========
+{<span class="string">"newField"</span>:<span class="string">"new"</span>,<span class="string">"field"</span>:<span class="string">"old"</span>}
+
+ {<span class="string">"newerField"</span>:<span class="string">"newer"</span>,<span class="string">"newField"</span>:<span class="string">"new"</span>,<span class="string">"field"</span>:<span class="string">"old"</span>}
+</code></pre><h2 id="Excluding_Fields_From_Serialization_and_Deserialization">Excluding Fields From Serialization and Deserialization</h2>
+<p>Gson supports numerous mechanisms for excluding top-level classes, fields and field types.  Below are pluggable mechanism that allow field and class exclusion. If none of the below mechanism satisfy your needs then you can always use custom serializers and deserializers.</p>
+<p>Java Modifier Exclusion<br>By default, if you mark a field as transient, it will be excluded.  As well, if a field is marked as “static” then by default it will be excluded. If you want to include some transient fields then you can do the following:</p>
+<pre><code><span class="keyword">import</span> java.lang.reflect.<span class="type">Modifier</span>;
+
+<span class="type">Gson</span> gson = new <span class="type">GsonBuilder</span>()
+    .excludeFieldsWithModifiers(<span class="type">Modifier</span>.<span class="type">STATIC</span>)
+    .create();
+
+<span class="type">NOTE</span>: you can use <span class="type">any</span> number <span class="keyword">of</span> the <span class="type">Modifier</span> constants to <span class="string">"excludeFieldsWithModifiers"</span> <span class="keyword">method</span>.  <span class="type">For</span> example:
+<span class="type">Gson</span> gson = new <span class="type">GsonBuilder</span>()
+     .excludeFieldsWithModifiers(<span class="type">Modifier</span>.<span class="type">STATIC</span>, <span class="type">Modifier</span>.<span class="type">TRANSIENT</span>, <span class="type">Modifier</span>.<span class="type">VOLATILE</span>)
+     .create();
+
+<span class="type">Gson</span>'s @<span class="type">Expose</span>
+</code></pre><p>This feature provides a way where you can mark certain fields of your objects to be excluded for consideration for serialization and deserialization to JSON. To use this annotation, you must create Gson by using new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create(). The Gson instance created will exclude all fields in a class that are not marked with @Expose annotation.</p>
+<h2 id="User_Defined_Exclusion_Strategies">User Defined Exclusion Strategies</h2>
+<p>If the above mechanisms for excluding fields and class type do not work for you then you can always write your own exclusion strategy and plug it into Gson. See the ExclusionStrategy JavaDoc for more information.</p>
+<p>The following example shows how to exclude fields marked with a specific “@Foo” annotation and excludes top-level types (or declared field type) of class String.</p>
+<pre><code>  <span class="annotation">@Retention</span>(RetentionPolicy.RUNTIME)
+  <span class="annotation">@Target</span>({ElementType.FIELD})
+  <span class="keyword">public</span> @<span class="class"><span class="keyword">interface</span> <span class="title">Foo</span> </span>{
+    <span class="comment">// Field tag only annotation</span>
+  }
+
+  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleObjectForTest</span> </span>{
+    <span class="annotation">@Foo</span> <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> annotatedField;
+    <span class="keyword">private</span> <span class="keyword">final</span> String stringField;
+    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> longField;
+    <span class="keyword">private</span> <span class="keyword">final</span> Class&lt;?&gt; clazzField;
+
+    <span class="keyword">public</span> <span class="title">SampleObjectForTest</span>() {
+      annotatedField = <span class="number">5</span>;
+      stringField = <span class="string">"someDefaultValue"</span>;
+      longField = <span class="number">1234</span>;
+    }
+  }
+
+  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyExclusionStrategy</span> <span class="keyword">implements</span> <span class="title">ExclusionStrategy</span> </span>{
+    <span class="keyword">private</span> <span class="keyword">final</span> Class&lt;?&gt; typeToSkip;
+
+    <span class="keyword">private</span> <span class="title">MyExclusionStrategy</span>(Class&lt;?&gt; typeToSkip) {
+      <span class="keyword">this</span>.typeToSkip = typeToSkip;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldSkipClass</span>(Class&lt;?&gt; clazz) {
+      <span class="keyword">return</span> (clazz == typeToSkip);
+    }
+
+    <span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldSkipField</span>(FieldAttributes f) {
+      <span class="keyword">return</span> f.getAnnotation(Foo.class) != <span class="keyword">null</span>;
+    }
+  }
+
+  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {
+    Gson gson = <span class="keyword">new</span> GsonBuilder()
+        .setExclusionStrategies(<span class="keyword">new</span> MyExclusionStrategy(String.class))
+        .serializeNulls()
+        .create();
+    SampleObjectForTest src = <span class="keyword">new</span> SampleObjectForTest();
+    String json = gson.toJson(src);
+    System.out.println(json);
+  }
+
+======== OUTPUT ========
+{<span class="string">"longField"</span>:<span class="number">1234</span>}
+</code></pre><h2 id="JSON_Field_Naming_Support">JSON Field Naming Support</h2>
+<p>Gson supports some pre-defined field naming policies to convert the standard Java field names (i.e. camel cased names starting with lower case —- “sampleFieldNameInJava”) to a Json field name (i.e. sample_field_name_in_java or SampleFieldNameInJava). See the FieldNamingPolicy class for information on the pre-defined naming policies.</p>
+<p>It also has an annotation based strategy to allows clients to define custom names on a per field basis.  Note, that the annotation based strategy has field name validation which will raise “Runtime” exceptions if an invalid field name is provided as the annotation value.</p>
+<p>The following is an example of how to use both Gson naming policy features:</p>
+<pre><code><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">SomeObject</span> </span>{
+  <span class="annotation">@SerializedName</span>(<span class="string">"custom_naming"</span>) <span class="keyword">private</span> <span class="keyword">final</span> String someField;
+  <span class="keyword">private</span> <span class="keyword">final</span> String someOtherField;
+
+  <span class="keyword">public</span> <span class="title">SomeObject</span>(String a, String b) {
+    <span class="keyword">this</span>.someField = a;
+    <span class="keyword">this</span>.someOtherField = b;
+  }
+}
+
+SomeObject someObject = <span class="keyword">new</span> SomeObject(<span class="string">"first"</span>, <span class="string">"second"</span>);
+Gson gson = <span class="keyword">new</span> GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
+String jsonRepresentation = gson.toJson(someObject);
+System.out.println(jsonRepresentation);
+
+======== OUTPUT ========
+{<span class="string">"custom_naming"</span>:<span class="string">"first"</span>,<span class="string">"SomeOtherField"</span>:<span class="string">"second"</span>}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+
+    </footer>
   </div>
-</section>
-<% } %>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/01/28/tasks-and-back-stack/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Tasks and Back Stack
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/30/android-protection-level/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android permission protection level</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
 
       <footer id="footer">
   <div class="outer">

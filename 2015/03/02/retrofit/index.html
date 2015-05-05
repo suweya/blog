@@ -184,21 +184,222 @@
 		</header>				
 	</div>
 </nav>
-      <% if (!index && theme.duoshuo && post.comments){ %>
-<%- partial('post/duoshuo', {
-    key: post.slug,
-    title: post.title,
-    url: config.url+url_for(post.path)
-  }) %>
-<% } %>
+      <article id="post-retrofit" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/02/retrofit/" class="article-date">
+  	<time datetime="2015-03-02T09:20:03.000Z" itemprop="datePublished">3月 2 2015</time>
+</a>
+      
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      retrofit
+    </h1>
+  
 
-<% if (!index && post.comments && config.disqus_shortname){ %>
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Retrofit_Usage">Retrofit Usage</h1>
+<hr>
+<p>使用步骤</p>
+<ul>
+<li><p>定义REST API接口</p>
+<pre><code>  <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">GitHubService</span> </span>{
+    <span class="annotation">@GET</span>(<span class="string">"/users/{user}/repos"</span>)
+    List&lt;Repo&gt; listRepos(<span class="annotation">@Path</span>(<span class="string">"user"</span>) String user);
+  }
+</code></pre></li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li>@Get —- 定义请求方式，也可以是POST</li>
+<li>@Path(“user”) —- 对应URL(/users/{user}/repos)中的{user}</li>
+<li>URL中的参数也可以这样添加</li>
+</ul>
+<pre><code>    <span class="variable">@GET</span>(<span class="string">"/group/{id}/users"</span>)
+    List&lt;User&gt; groupList(<span class="variable">@Path</span>(<span class="string">"id"</span>) <span class="keyword">int</span> groupId, <span class="variable">@Query</span>(<span class="string">"sort"</span>) String <span class="keyword">sort</span>);
+</code></pre><ul>
+<li><p>复杂的参数可以通过以下格式添加@QueryMap</p>
+<pre><code>  @GET(<span class="string">"/group/{id}/users"</span>)
+  <span class="keyword">List</span>&lt;User&gt; groupList(@<span class="keyword">Path</span>(<span class="string">"id"</span>) int groupId, @QueryMap <span class="keyword">Map</span>&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; options);
+</code></pre></li>
+</ul>
+<ul>
+<li><p>Post数据的添加@Body</p>
+<pre><code>  <span class="annotation">@POST</span>(<span class="string">"/users/new"</span>)
+  <span class="keyword">void</span> createUser(<span class="annotation">@Body</span> User user, Callback&lt;User&gt; cb);
+</code></pre></li>
+<li><p>表单数据@FormUrlEncoded  @Field</p>
+<pre><code>  <span class="at_rule">@<span class="keyword">FormUrlEncoded</span>
+  @<span class="function">POST</span>(<span class="string">"/user/edit"</span>)
+  User <span class="function">updateUser</span>(@<span class="function">Field</span>(<span class="string">"first_name"</span>) String first, @<span class="function">Field</span>(<span class="string">"last_name"</span>) String last)</span>;
+</code></pre></li>
+<li><p>多媒体数据@Multipart @Part</p>
+<pre><code>  <span class="at_rule">@<span class="keyword">Multipart</span>
+  @<span class="function">PUT</span>(<span class="string">"/user/photo"</span>)
+  User <span class="function">updateUser</span>(@<span class="function">Part</span>(<span class="string">"photo"</span>) TypedFile photo, @<span class="function">Part</span>(<span class="string">"description"</span>) TypedString description)</span>;
+</code></pre></li>
+<li><p>HTTP头添加</p>
+<pre><code>  <span class="annotation">@Headers</span>(<span class="string">"Cache-Control: max-age=640000"</span>)
+  <span class="annotation">@GET</span>(<span class="string">"/widget/list"</span>)
+  List&lt;Widget&gt; widgetList();
+
+  <span class="annotation">@Headers</span>({
+      <span class="string">"Accept: application/vnd.github.v3.full+json"</span>,
+      <span class="string">"User-Agent: Retrofit-Sample-App"</span>
+  })
+  <span class="annotation">@GET</span>(<span class="string">"/users/{username}"</span>)
+  User getUser(<span class="annotation">@Path</span>(<span class="string">"username"</span>) String username);
+
+  <span class="annotation">@GET</span>(<span class="string">"/user"</span>)
+  <span class="keyword">void</span> getUser(<span class="annotation">@Header</span>(<span class="string">"Authorization"</span>) String authorization, Callback&lt;User&gt; callback)
+</code></pre></li>
+<li><p>通过请求拦截器为每个请求添加头信息</p>
+<pre><code>  RequestInterceptor requestInterceptor = <span class="keyword">new</span> RequestInterceptor() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">intercept</span>(RequestFacade request) {
+      request.addHeader(<span class="string">"User-Agent"</span>, <span class="string">"Retrofit-Sample-App"</span>);
+    }
+  };
+
+  RestAdapter restAdapter = <span class="keyword">new</span> RestAdapter.Builder()
+    .setEndpoint(<span class="string">"https://api.github.com"</span>)
+    .setRequestInterceptor(requestInterceptor)
+    .build();
+</code></pre></li>
+</ul>
+<hr>
+<ul>
+<li><p>通过RestAdapter来生成GitHubServices的实现类</p>
+<pre><code>  RestAdapter restAdapter = <span class="keyword">new</span> RestAdapter.Builder()
+      .setEndpoint(<span class="string">"https://api.github.com"</span>)
+      .build();
+
+  GitHubService service = restAdapter.create(GitHubService.<span class="keyword">class</span>);
+</code></pre></li>
+<li><p>调用REST API</p>
+<pre><code><span class="constant">  List&lt;Repo&gt; repos</span> = <span class="class"><span class="keyword">service</span>.<span class="title">listRepos</span>("octocat");</span>
+</code></pre></li>
+</ul>
+<hr>
+<ul>
+<li><p>API调用在同步或者异步</p>
+<ul>
+<li><p>同步模式</p>
+<pre><code>  <span class="at_rule">@<span class="keyword">GET("/user/{id}/photo")</span>
+  Photo <span class="function">getUserPhoto</span>(@<span class="function">Path</span>(<span class="string">"id"</span>) int id)</span>;
+</code></pre></li>
+<li><p>异步模式</p>
+<pre><code>  <span class="annotation">@GET</span>(<span class="string">"/user/{id}/photo"</span>)
+  <span class="keyword">void</span> getUserPhoto(<span class="annotation">@Path</span>(<span class="string">"id"</span>) <span class="keyword">int</span> id, Callback&lt;Photo&gt; cb);
+</code></pre></li>
+<li><p>异步模式只需要在方法的最后添加Callback，然后返回值为void</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>配置RestAdapter的Convert</p>
+<ul>
+<li>Retorfit默认使用Gson将Http Body转换成相应的Json</li>
+<li>可以通过实现Convert来自定义的转换器，来解析XML和其他数据</li>
+<li><p>Example</p>
+<pre><code>  Gson gson = <span class="keyword">new</span> GsonBuilder()
+      .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+      .registerTypeAdapter(<span class="built_in">Date</span>.<span class="keyword">class</span>, <span class="keyword">new</span> DateTypeAdapter())
+      .create();
+
+  RestAdapter restAdapter = <span class="keyword">new</span> RestAdapter.Builder()
+      .setEndpoint(<span class="string">"https://api.github.com"</span>)
+      .setConverter(<span class="keyword">new</span> GsonConverter(gson))
+      .build();
+
+  GitHubService service = restAdapter.create(GitHubService.<span class="keyword">class</span>);
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>设置日志</p>
+<ul>
+<li><p>Example</p>
+<pre><code>  RestAdapter restAdapter <span class="subst">=</span> <span class="literal">new</span> RestAdapter<span class="built_in">.</span>Builder()
+      <span class="built_in">.</span>setLogLevel(RestAdapter<span class="built_in">.</span>LogLevel<span class="built_in">.</span><span class="literal">FULL</span>)
+      <span class="built_in">.</span>setEndpoint(<span class="string">"https://api.github.com"</span>)
+      <span class="built_in">.</span>build();
+</code></pre></li>
+<li><p>RestAdapter.LogLevel.FULL    所有的日志都会输出</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+
+    </footer>
   </div>
-</section>
-<% } %>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/03/26/Google-Guava/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Google Guava
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/01/28/tasks-and-back-stack/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Tasks and Back Stack</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
 
       <footer id="footer">
   <div class="outer">

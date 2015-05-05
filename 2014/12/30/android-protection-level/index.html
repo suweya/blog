@@ -163,21 +163,100 @@
 		</header>				
 	</div>
 </nav>
-      <% if (!index && theme.duoshuo && post.comments){ %>
-<%- partial('post/duoshuo', {
-    key: post.slug,
-    title: post.title,
-    url: config.url+url_for(post.path)
-  }) %>
-<% } %>
+      <article id="post-android-protection-level" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/12/30/android-protection-level/" class="article-date">
+  	<time datetime="2014-12-30T07:34:29.000Z" itemprop="datePublished">12月 30 2014</time>
+</a>
+      
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      android permission protection level
+    </h1>
+  
 
-<% if (!index && post.comments && config.disqus_shortname){ %>
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Android中对于一些需要付费、用户隐私的操作，我们都会格外小心。<br>出于安全性的考虑，应用在安装的时候都会列出需要的权限列表，在原生的ROM中对于需要付费和用户隐私的权限都会高亮提示用户，在Flyme和Miui等第三方Rom一般都会提供权限控制开关。除了系统定义好的权限，我们也可以自定义自己的权限。语法如下：</p>
+<pre><code>&lt;permission android:<span class="variable">description=</span><span class="string">"string resource"</span>
+            android:<span class="variable">icon=</span><span class="string">"drawable resource"</span>
+            android:<span class="variable">label=</span><span class="string">"string resource"</span>
+            android:<span class="variable">name=</span><span class="string">"string"</span>
+            android:<span class="variable">permissionGroup=</span><span class="string">"string"</span>
+            android:<span class="variable">protectionLevel=</span>[<span class="string">"normal"</span> | <span class="string">"dangerous"</span> | 
+                                     <span class="string">"signature"</span> | <span class="string">"signatureOrSystem"</span>] /&gt;
+</code></pre><p><a id="more"></a><br>四种权限级别</p>
+<ul>
+<li>normal：低风险权限，只要申请了就可以使用（在AndroidManifest.xml中添加<uses-permission>标签），安装时不需要用户确认；</uses-permission></li>
+<li>dangerous：高风险权限，安装时需要用户的确认才可使用；</li>
+<li>signature：只有当申请权限的应用程序的数字签名与声明此权限的应用程序的数字签名相同时（如果是申请系统权限，则需要与系统签名相同），才能将权限授给它；</li>
+<li>signatureOrSystem：签名相同，或者申请权限的应用为系统应用（在system image中）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+
+    </footer>
   </div>
-</section>
-<% } %>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/01/04/gson-usage/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Gson usage
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/26/android-test-sample/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Google&#39;s Testing Tools For Android --- Espresso</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
 
       <footer id="footer">
   <div class="outer">

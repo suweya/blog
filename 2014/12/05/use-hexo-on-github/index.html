@@ -163,21 +163,149 @@
 		</header>				
 	</div>
 </nav>
-      <% if (!index && theme.duoshuo && post.comments){ %>
-<%- partial('post/duoshuo', {
-    key: post.slug,
-    title: post.title,
-    url: config.url+url_for(post.path)
-  }) %>
-<% } %>
+      <article id="post-use-hexo-on-github" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/12/05/use-hexo-on-github/" class="article-date">
+  	<time datetime="2014-12-05T11:45:34.000Z" itemprop="datePublished">12月 5 2014</time>
+</a>
+      
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用Hexo在Github上搭建Blog
+    </h1>
+  
 
-<% if (!index && post.comments && config.disqus_shortname){ %>
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一直在寻找和纠结在哪里写blog，虽说不怎么写，但总的有一个偶尔可以写写。<br>曾用过CSDN、OSCHINA、CNBLOG、自己搭建WordPress，不过都不是很满意。</p>
+<p>知道后面看到Hexo，感觉很轻巧，很快速几行命令就可以快速创建。<br>而且Article存储在Github上，每次写完就可上传到远程仓库上，就像写代码一样的写blog，呵呵。<br><a id="more"></a><br>下面就来说说怎么搭建</p>
+<h2 id="首先你需要安装以下环境">首先你需要安装以下环境</h2>
+<ol>
+<li>安装NodeJs <a href="http://www.nodejs.org/download" target="_blank" rel="external">http://www.nodejs.org/download</a> 下载，一路下一步即可</li>
+<li>安装Git <a href="http://git-scm.com/download/" target="_blank" rel="external">http://git-scm.com/download/</a> </li>
+<li>安装Hexo Hexo是一个基于Node.js的静态博客程序<br>使用nmp命令即可安装（点击鼠标右键，选择Git bash）<pre><code>     npm <span class="operator"><span class="keyword">install</span> hexo</span>
+</code></pre></li>
+</ol>
+<p>接下来就可开始创建你自己的blog了</p>
+<ul>
+<li>在本地新建一个文件夹，名字随便取</li>
+</ul>
+<ul>
+<li>在该文件夹下点击鼠标邮件，选择Git bash </li>
+</ul>
+<ul>
+<li>hexo init  初始化，Hexo会自动的在文件夹下创建所需要的文件，是不是很方便</li>
+</ul>
+<ul>
+<li>hexo install 安装依赖包</li>
+</ul>
+<ul>
+<li>hexo generate 生成静态网页文件(hexo g命令也可以)</li>
+</ul>
+<ul>
+<li>hexo server 在本地运行(hexo s 也可以)</li>
+</ul>
+<ul>
+<li>至此，你的blog就可以在本地预览一下了，打开浏览器输入localhost:4000就可以看到了</li>
+</ul>
+<h2 id="下一步就可以将你的blog放到Github上了">下一步就可以将你的blog放到Github上了</h2>
+<p>首先你得有一个Github帐号<br>如果没有可以在<a href="https://github.com/注册一个" target="_blank" rel="external">https://github.com/注册一个</a></p>
+<h2 id="配置Github">配置Github</h2>
+<ul>
+<li>在你的电脑的C:\Users\xxx(你的用户名)检查一下有没有.ssh文件夹</li>
+</ul>
+<ul>
+<li>如果没有可以生成一个新的SSH Key<blockquote>
+<p>$ ssh-keygen -t rsa -C “邮件地址@youremail.com”<br><br>Generating public/private rsa key pair.<br><br>Enter file in which to save the key (/Users/your_user_directory/.ssh/id_rsa):&lt;回车就好&gt;<br><br>注意1: 此处的邮箱地址，你可以输入自己的邮箱地址；注意2: 此处的「-C」的是大写的「C」<br>然后系统会要你输入密码：<br><br>Enter passphrase (empty for no passphrase):&lt;输入加密串&gt;<br><br>Enter same passphrase again:&lt;再次输入加密串&gt;</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="添加SSH_Key到GitHub">添加SSH Key到GitHub</h2>
+<p>在本机设置SSH Key之后，需要添加到GitHub上，以完成SSH链接的设置。</p>
+<ul>
+<li>打开本地C:\Users\xxx(你的用户名).ssh\id_rsa.pub文件。此文件里面内容为刚才生成人密钥。如果看不到这个文件，你需要设置显示隐藏文件。准确的复制这个文件的内容，才能保证设置的成功。</li>
+</ul>
+<ul>
+<li>登陆github系统。点击右上角的 Account Settings—-&gt;SSH Public keys —-&gt; add another public keys</li>
+</ul>
+<ul>
+<li>把你本地生成的密钥复制到里面（key文本框中）， 点击 add key 就ok了</li>
+</ul>
+<p>至此你的SSH Key已经配置完成了<br>在你的Github上创建一个空的repository<br>创建完成后会有一个项目的地址</p>
+<p>然后在本地的bolg的文件下的_config.yml,修改deploy部分</p>
+<blockquote>
+<p>   deploy:<br><br>   type: github<br><br>   repo: 你的项目的地址</p>
+</blockquote>
+<p>然后就可以通过hexo deploy命令将blog部署上去了<br>这个静态的web网站就被部署到了github，检查一下分支是gh-pages。<br>gh-pages是github为了web项目特别设置的分支。<br>至此你的项目已经部署在Github上了，blog的地址可以打开repository右边的setting查看一下</p>
+<h2 id="绑定域名">绑定域名</h2>
+<p>下一步可以绑定域名，可以不用备案的域名哦，这一点很好<br>在github项目下新建一个CNAME文件，在文件里写入你的域名<br>不过通过hexo deploy命令部署的话，每一次都会删除所有的文件重新生成，自然CNAME文件就会被删除<br>所以要把CNAME文件放在source文件夹下</p>
+<p>这里我在西部数码申请的域名好像不支持主域名绑定所以我只好绑定在子域名上<br>就是blog.suweya.net<br>在域名管理里面的域名解析添加一条如下的记录<br>主机名 ：blog<br>解析类型 ： A<br>对应值 ： 192.30.252.153<br>TTL ： 600</p>
+<p>这样就可以用你自己的域名访问你的blog啦</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+
+    </footer>
   </div>
-</section>
-<% } %>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/07/new-building-domain/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          自定义域名的新方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/05/新的开始/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">新的开始</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
 
       <footer id="footer">
   <div class="outer">
