@@ -209,8 +209,41 @@ activityCloseEnterAnimation">
 <p>activityOpenExitAnimation  start时另一个页面退出的动画</p>
 <p>activityCloseEnterAnimation  finish时上一个元素进入的动画</p>
 <p>activityCloseExitAnimation  finish时退出的动画</p>
-<p><!-- Standard animations for a full-screen window or activity. --><br>    <style name="Animation.Activity"><br>        <item name="activityOpenEnterAnimation">@anim/activity_open_enter</item><br>        <item name="activityOpenExitAnimation">@anim/activity_open_exit</item><br>        <item name="activityCloseEnterAnimation">@anim/activity_close_enter</item><br>        <item name="activityCloseExitAnimation">@anim/activity_close_exit</item><br>        <item name="taskOpenEnterAnimation">@anim/task_open_enter</item><br>        <item name="taskOpenExitAnimation">@anim/task_open_exit</item><br>        <item name="launchTaskBehindTargetAnimation">@anim/launch_task_behind_target</item><br>        <item name="launchTaskBehindSourceAnimation">@anim/launch_task_behind_source</item><br>        <item name="taskCloseEnterAnimation">@anim/task_close_enter</item><br>        <item name="taskCloseExitAnimation">@anim/task_close_exit</item><br>        <item name="taskToFrontEnterAnimation">@anim/task_open_enter</item><br>        <item name="taskToFrontExitAnimation">@anim/task_open_exit</item><br>        <item name="taskToBackEnterAnimation">@anim/task_close_enter</item><br>        <item name="taskToBackExitAnimation">@anim/task_close_exit</item><br>        <item name="wallpaperOpenEnterAnimation">@anim/wallpaper_open_enter</item><br>        <item name="wallpaperOpenExitAnimation">@anim/wallpaper_open_exit</item><br>        <item name="wallpaperCloseEnterAnimation">@anim/wallpaper_close_enter</item><br>        <item name="wallpaperCloseExitAnimation">@anim/wallpaper_close_exit</item><br>        <item name="wallpaperIntraOpenEnterAnimation">@anim/wallpaper_intra_open_enter</item><br>        <item name="wallpaperIntraOpenExitAnimation">@anim/wallpaper_intra_open_exit</item><br>        <item name="wallpaperIntraCloseEnterAnimation">@anim/wallpaper_intra_close_enter</item><br>        <item name="wallpaperIntraCloseExitAnimation">@anim/wallpaper_intra_close_exit</item><br>        <item name="fragmentOpenEnterAnimation">@animator/fragment_open_enter</item><br>        <item name="fragmentOpenExitAnimation">@animator/fragment_open_exit</item><br>        <item name="fragmentCloseEnterAnimation">@animator/fragment_close_enter</item><br>        <item name="fragmentCloseExitAnimation">@animator/fragment_close_exit</item><br>        <item name="fragmentFadeEnterAnimation">@animator/fragment_fade_enter</item><br>        <item name="fragmentFadeExitAnimation">@animator/fragment_fade_exit</item><br>    </style></p>
-<pre><code>http<span class="variable">s:</span>//github.<span class="keyword">com</span>/android/platform_frameworks_base/blob/master/core/<span class="keyword">res</span>/<span class="keyword">res</span>/<span class="built_in">values</span>/styles.xml
+<a id="more"></a>
+
+<p>Standard animations for a full-screen window or activity.</p>
+<pre><code>  &lt;style name=<span class="string">"Animation.Activity"</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"activityOpenEnterAnimation"</span>&gt;@anim/activity_open_enter&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"activityOpenExitAnimation"</span>&gt;@anim/activity_open_exit&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"activityCloseEnterAnimation"</span>&gt;@anim/activity_close_enter&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"activityCloseExitAnimation"</span>&gt;@anim/activity_close_exit&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"taskOpenEnterAnimation"</span>&gt;@anim/task_open_enter&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"taskOpenExitAnimation"</span>&gt;@anim/task_open_exit&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"launchTaskBehindTargetAnimation"</span>&gt;@anim/launch_task_behind_target&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"launchTaskBehindSourceAnimation"</span>&gt;@anim/launch_task_behind_source&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"taskCloseEnterAnimation"</span>&gt;@anim/task_close_enter&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"taskCloseExitAnimation"</span>&gt;@anim/task_close_exit&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"taskToFrontEnterAnimation"</span>&gt;@anim/task_open_enter&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"taskToFrontExitAnimation"</span>&gt;@anim/task_open_exit&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"taskToBackEnterAnimation"</span>&gt;@anim/task_close_enter&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"taskToBackExitAnimation"</span>&gt;@anim/task_close_exit&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"wallpaperOpenEnterAnimation"</span>&gt;@anim/wallpaper_open_enter&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"wallpaperOpenExitAnimation"</span>&gt;@anim/wallpaper_open_exit&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"wallpaperCloseEnterAnimation"</span>&gt;@anim/wallpaper_close_enter&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"wallpaperCloseExitAnimation"</span>&gt;@anim/wallpaper_close_exit&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"wallpaperIntraOpenEnterAnimation"</span>&gt;@anim/wallpaper_intra_open_enter&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"wallpaperIntraOpenExitAnimation"</span>&gt;@anim/wallpaper_intra_open_exit&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"wallpaperIntraCloseEnterAnimation"</span>&gt;@anim/wallpaper_intra_close_enter&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"wallpaperIntraCloseExitAnimation"</span>&gt;@anim/wallpaper_intra_close_exit&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"fragmentOpenEnterAnimation"</span>&gt;@animator/fragment_open_enter&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"fragmentOpenExitAnimation"</span>&gt;@animator/fragment_open_exit&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"fragmentCloseEnterAnimation"</span>&gt;@animator/fragment_close_enter&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"fragmentCloseExitAnimation"</span>&gt;@animator/fragment_close_exit&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"fragmentFadeEnterAnimation"</span>&gt;@animator/fragment_fade_enter&lt;/<span class="keyword">item</span>&gt;
+      &lt;<span class="keyword">item</span> name=<span class="string">"fragmentFadeExitAnimation"</span>&gt;@animator/fragment_fade_exit&lt;/<span class="keyword">item</span>&gt;
+  &lt;/style&gt;
+
+<span class="keyword">https</span>://github.com/android/platform_frameworks_base/blob/master/core/res/res/values/styles.xml
 </code></pre>
       
     </div>
