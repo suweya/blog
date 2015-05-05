@@ -37,9 +37,9 @@ The Espresso API encourages test authors to think in terms of what a user might 
     <div class="overlay"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<div class="profilepic">
-			<img src="http://bcs.duapp.com/suweyablog/avatar.png">
-		</div>
+		<a href="/" class="profilepic">
+			<img lazy-src="http://bcs.duapp.com/suweyablog/avatar.png" class="js-avatar">
+		</a>
 
 		<hgroup>
 		  <h1 class="header-author"><a href="/">迷途</a></h1>
@@ -109,7 +109,7 @@ The Espresso API encourages test authors to think in terms of what a user might 
 				
 				
 				<section class="switch-part switch-part2">
-					<div class="widget tagcloud">
+					<div class="widget tagcloud" id="js-tagcloud">
 						<a href="/tags/Image/" style="font-size: NaNpx;">Image</a><a href="/tags/Markdown/" style="font-size: NaNpx;">Markdown</a><a href="/tags/Plan-2015/" style="font-size: NaNpx;">Plan 2015</a>
 					</div>
 				</section>
@@ -121,7 +121,7 @@ The Espresso API encourages test authors to think in terms of what a user might 
 				
 				<section class="switch-part switch-part3">
 				
-					尘世间迷途小书童
+					<div id="js-aboutme">尘世间迷途小书童</div>
 				</section>
 				
 			</div>
@@ -131,15 +131,17 @@ The Espresso API encourages test authors to think in terms of what a user might 
     </div>
     <div class="mid-col">
       <nav id="mobile-nav">
-  	<div class="overlay"></div>
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">迷途</h1>
+  	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://bcs.duapp.com/suweyablog/avatar.png">
+				<img lazy-src="http://bcs.duapp.com/suweyablog/avatar.png" class="js-avatar">
 			</div>
-
 			<hgroup>
-			  <h1 class="header-author"><a href="/">迷途</a></h1>
+			  <h1 class="header-author">迷途</h1>
 			</hgroup>
 			
 			<nav class="header-menu">
@@ -166,14 +168,12 @@ The Espresso API encourages test authors to think in terms of what a user might 
 		</header>				
 	</div>
 </nav>
-      <article id="post-android-test-sample" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-android-test-sample" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2014/12/26/android-test-sample/" class="article-date">
   	<time datetime="2014-12-26T01:30:42.000Z" itemprop="datePublished">12月 26 2014</time>
 </a>
-      
-      
     </div>
   
   <div class="article-inner">
@@ -190,6 +190,14 @@ The Espresso API encourages test authors to think in terms of what a user might 
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -289,17 +297,14 @@ The Espresso API encourages test authors to think in terms of what a user might 
 
       
     </div>
-    <footer class="article-footer">
-      
-
-    </footer>
+    
   </div>
   
     
 <nav id="article-nav">
   
     <a href="/2014/12/30/android-protection-level/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
+      <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
           android permission protection level
@@ -310,7 +315,7 @@ The Espresso API encourages test authors to think in terms of what a user might 
   
     <a href="/2014/12/25/android-https/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">﻿Security with HTTPS and SSL</div>
-      <strong class="article-nav-caption">&gt;</strong>
+      <strong class="article-nav-caption">></strong>
     </a>
   
 </nav>
@@ -336,28 +341,8 @@ The Espresso API encourages test authors to think in terms of what a user might 
 
 
 
-  <section id="comments">
-    <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="post-android-test-sample" data-title="Google&#39;s Testing Tools For Android --- Espresso" data-url="http://blog.suweya.net/2014/12/26/android-test-sample/"></div>
-    <!-- 多说评论框 end -->
-    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:'suweya'};
-      (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-      })();
-      </script>
-    <!-- 多说公共JS代码 end -->
-  </section>
-  
 
-
-
+</div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
@@ -376,7 +361,16 @@ The Espresso API encourages test authors to think in terms of what a user might 
 
   <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
-  <script src="/js/main.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
 
 
   </div>

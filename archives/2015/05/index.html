@@ -31,9 +31,9 @@
     <div class="overlay"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<div class="profilepic">
-			<img src="http://bcs.duapp.com/suweyablog/avatar.png">
-		</div>
+		<a href="/" class="profilepic">
+			<img lazy-src="http://bcs.duapp.com/suweyablog/avatar.png" class="js-avatar">
+		</a>
 
 		<hgroup>
 		  <h1 class="header-author"><a href="/">迷途</a></h1>
@@ -103,7 +103,7 @@
 				
 				
 				<section class="switch-part switch-part2">
-					<div class="widget tagcloud">
+					<div class="widget tagcloud" id="js-tagcloud">
 						<a href="/tags/Image/" style="font-size: NaNpx;">Image</a><a href="/tags/Markdown/" style="font-size: NaNpx;">Markdown</a><a href="/tags/Plan-2015/" style="font-size: NaNpx;">Plan 2015</a>
 					</div>
 				</section>
@@ -115,7 +115,7 @@
 				
 				<section class="switch-part switch-part3">
 				
-					尘世间迷途小书童
+					<div id="js-aboutme">尘世间迷途小书童</div>
 				</section>
 				
 			</div>
@@ -125,15 +125,17 @@
     </div>
     <div class="mid-col">
       <nav id="mobile-nav">
-  	<div class="overlay"></div>
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">迷途</h1>
+  	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://bcs.duapp.com/suweyablog/avatar.png">
+				<img lazy-src="http://bcs.duapp.com/suweyablog/avatar.png" class="js-avatar">
 			</div>
-
 			<hgroup>
-			  <h1 class="header-author"><a href="/">迷途</a></h1>
+			  <h1 class="header-author">迷途</h1>
 			</hgroup>
 			
 			<nav class="header-menu">
@@ -160,7 +162,7 @@
 		</header>				
 	</div>
 </nav>
-      
+      <div class="body-wrap">
   
     <article id="post-2015-Plan" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -168,10 +170,6 @@
       <a href="/2015/05/05/2015-Plan/" class="article-date">
   	<time datetime="2015-05-05T02:10:00.000Z" itemprop="datePublished">5月 5 2015</time>
 </a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Plan-2015/">Plan 2015</a></li></ul>
-
     </div>
   
   <div class="article-inner">
@@ -188,22 +186,31 @@
   
 
       </header>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>书 -&gt; 一个人的朝圣</p>
 
-        
-          <p class="article-more-link">
-            <a href="/2015/05/05/2015-Plan/#more">more >></a>
-          </p>
-        
       
     </div>
-    <footer class="article-footer">
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Plan-2015/">Plan 2015</a></li></ul>
+	</div>
+
       
 
-    </footer>
+      
+        <p class="article-more-link">
+          <a  href="/2015/05/05/2015-Plan/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
   </div>
   
 </article>
@@ -213,10 +220,9 @@
 
 
 
-
   
   
-
+</div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
@@ -235,7 +241,16 @@
 
   <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
-  <script src="/js/main.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
 
 
   </div>

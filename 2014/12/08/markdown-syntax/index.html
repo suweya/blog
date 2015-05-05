@@ -58,9 +58,9 @@ Some of these words are emphasized.Som">
     <div class="overlay"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<div class="profilepic">
-			<img src="http://bcs.duapp.com/suweyablog/avatar.png">
-		</div>
+		<a href="/" class="profilepic">
+			<img lazy-src="http://bcs.duapp.com/suweyablog/avatar.png" class="js-avatar">
+		</a>
 
 		<hgroup>
 		  <h1 class="header-author"><a href="/">迷途</a></h1>
@@ -130,7 +130,7 @@ Some of these words are emphasized.Som">
 				
 				
 				<section class="switch-part switch-part2">
-					<div class="widget tagcloud">
+					<div class="widget tagcloud" id="js-tagcloud">
 						<a href="/tags/Image/" style="font-size: NaNpx;">Image</a><a href="/tags/Markdown/" style="font-size: NaNpx;">Markdown</a><a href="/tags/Plan-2015/" style="font-size: NaNpx;">Plan 2015</a>
 					</div>
 				</section>
@@ -142,7 +142,7 @@ Some of these words are emphasized.Som">
 				
 				<section class="switch-part switch-part3">
 				
-					尘世间迷途小书童
+					<div id="js-aboutme">尘世间迷途小书童</div>
 				</section>
 				
 			</div>
@@ -152,15 +152,17 @@ Some of these words are emphasized.Som">
     </div>
     <div class="mid-col">
       <nav id="mobile-nav">
-  	<div class="overlay"></div>
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">迷途</h1>
+  	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://bcs.duapp.com/suweyablog/avatar.png">
+				<img lazy-src="http://bcs.duapp.com/suweyablog/avatar.png" class="js-avatar">
 			</div>
-
 			<hgroup>
-			  <h1 class="header-author"><a href="/">迷途</a></h1>
+			  <h1 class="header-author">迷途</h1>
 			</hgroup>
 			
 			<nav class="header-menu">
@@ -187,20 +189,12 @@ Some of these words are emphasized.Som">
 		</header>				
 	</div>
 </nav>
-      <article id="post-markdown-syntax" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-markdown-syntax" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2014/12/08/markdown-syntax/" class="article-date">
   	<time datetime="2014-12-08T01:09:29.000Z" itemprop="datePublished">12月 8 2014</time>
 </a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/记录/">记录</a>
-  </div>
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
-
     </div>
   
   <div class="article-inner">
@@ -217,6 +211,22 @@ Some of these words are emphasized.Som">
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/记录/">记录</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -237,17 +247,14 @@ Some of these words are emphasized.Som">
 
       
     </div>
-    <footer class="article-footer">
-      
-
-    </footer>
+    
   </div>
   
     
 <nav id="article-nav">
   
     <a href="/2014/12/08/bumptech-glide/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
+      <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
           Android图片加载库：glide
@@ -258,7 +265,7 @@ Some of these words are emphasized.Som">
   
     <a href="/2014/12/07/new-building-domain/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">自定义域名的新方法</div>
-      <strong class="article-nav-caption">&gt;</strong>
+      <strong class="article-nav-caption">></strong>
     </a>
   
 </nav>
@@ -284,28 +291,8 @@ Some of these words are emphasized.Som">
 
 
 
-  <section id="comments">
-    <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="post-markdown-syntax" data-title="Markdown语法" data-url="http://blog.suweya.net/2014/12/08/markdown-syntax/"></div>
-    <!-- 多说评论框 end -->
-    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:'suweya'};
-      (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-      })();
-      </script>
-    <!-- 多说公共JS代码 end -->
-  </section>
-  
 
-
-
+</div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
@@ -324,7 +311,16 @@ Some of these words are emphasized.Som">
 
   <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
-  <script src="/js/main.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
 
 
   </div>
