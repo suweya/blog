@@ -162,268 +162,89 @@
 </nav>
       
   
-    <article id="post-2015-Plan" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/05/05/2015-Plan/" class="article-date">
-  	<time datetime="2015-05-05T02:10:00.000Z" itemprop="datePublished">5月 5 2015</time>
-</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Plan-2015/">Plan 2015</a></li></ul>
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/05/2015-Plan/">2015 计划</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>书 -&gt; 一个人的朝圣</p>
-
-        
-          <p class="article-more-link">
-            <a href="/2015/05/05/2015-Plan/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
-    <article id="post-Google-Guava" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/03/26/Google-Guava/" class="article-date">
-  	<time datetime="2015-03-26T01:32:10.000Z" itemprop="datePublished">3月 26 2015</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/26/Google-Guava/">Google Guava</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Google Guava Collections 使用介绍<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/03/26/Google-Guava/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
-    <article id="post-retrofit" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/03/02/retrofit/" class="article-date">
-  	<time datetime="2015-03-02T09:20:03.000Z" itemprop="datePublished">3月 2 2015</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/02/retrofit/">retrofit</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Retrofit_Usage">Retrofit Usage</h1>
-<hr>
-<p>使用步骤</p>
-<ul>
-<li><p>定义REST API接口</p>
-<pre><code>  <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">GitHubService</span> </span>{
-    <span class="annotation">@GET</span>(<span class="string">"/users/{user}/repos"</span>)
-    List&lt;Repo&gt; listRepos(<span class="annotation">@Path</span>(<span class="string">"user"</span>) String user);
-  }
-</code></pre></li>
-</ul>
-
-        
-          <p class="article-more-link">
-            <a href="/2015/03/02/retrofit/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
-    <article id="post-tasks-and-back-stack" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/01/28/tasks-and-back-stack/" class="article-date">
-  	<time datetime="2015-01-28T01:11:33.000Z" itemprop="datePublished">1月 28 2015</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/28/tasks-and-back-stack/">Tasks and Back Stack</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Using_the_manifest_file">Using the manifest file</h2>
-<p>When declaring an activity in your manifest file, you can specify how the activity should associate with a task using the <activity> element’s launchMode attribute.</activity></p>
-<p>The launchMode attribute specifies an instruction on how the activity should be launched into a task. There are four different launch modes you can assign to the launchMode attribute:</p>
-
-        
-          <p class="article-more-link">
-            <a href="/2015/01/28/tasks-and-back-stack/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
-    <article id="post-gson-usage" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/01/04/gson-usage/" class="article-date">
-  	<time datetime="2015-01-04T07:15:32.000Z" itemprop="datePublished">1月 4 2015</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/04/gson-usage/">Gson usage</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Using_Gson">Using Gson</h1>
-<p>The primary class to use is Gson which you can just create by calling new Gson(). There is also a class GsonBuilder available that can be used to create a Gson instance with various settings like version control and so on. </p>
-<p>The Gson instance does not maintain any state while invoking Json operations. So, you are free to reuse the same object for multiple Json serialization and deserialization operations.<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/01/04/gson-usage/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
   

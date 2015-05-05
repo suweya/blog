@@ -162,107 +162,38 @@
 </nav>
       
   
-    <article id="post-tasks-and-back-stack" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/01/28/tasks-and-back-stack/" class="article-date">
-  	<time datetime="2015-01-28T01:11:33.000Z" itemprop="datePublished">1月 28 2015</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/28/tasks-and-back-stack/">Tasks and Back Stack</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Using_the_manifest_file">Using the manifest file</h2>
-<p>When declaring an activity in your manifest file, you can specify how the activity should associate with a task using the <activity> element’s launchMode attribute.</activity></p>
-<p>The launchMode attribute specifies an instruction on how the activity should be launched into a task. There are four different launch modes you can assign to the launchMode attribute:</p>
-
-        
-          <p class="article-more-link">
-            <a href="/2015/01/28/tasks-and-back-stack/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
-    <article id="post-gson-usage" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/01/04/gson-usage/" class="article-date">
-  	<time datetime="2015-01-04T07:15:32.000Z" itemprop="datePublished">1月 4 2015</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/04/gson-usage/">Gson usage</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Using_Gson">Using Gson</h1>
-<p>The primary class to use is Gson which you can just create by calling new Gson(). There is also a class GsonBuilder available that can be used to create a Gson instance with various settings like version control and so on. </p>
-<p>The Gson instance does not maintain any state while invoking Json operations. So, you are free to reuse the same object for multiple Json serialization and deserialization operations.<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/01/04/gson-usage/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
   

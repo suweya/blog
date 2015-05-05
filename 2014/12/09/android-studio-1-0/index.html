@@ -170,130 +170,21 @@
 		</header>				
 	</div>
 </nav>
-      <article id="post-android-studio-1-0" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/09/android-studio-1-0/" class="article-date">
-  	<time datetime="2014-12-09T08:21:54.000Z" itemprop="datePublished">12月 9 2014</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Android Studio 1.0
-    </h1>
-  
+      <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Android Studio 1.0发布啦，带来了一些新的功能。<br><img src="http://bcs.duapp.com/suweyablog/studio-logo.png" alt="Android Studio"></p>
-<a id="more"></a>
-
-<ul>
-<li>启动体验</li>
-</ul>
-<p>首次运行设置向导 - 首先安装正确的AndroidSDK，设置你的开发环境设置，并创建用于测试你的应用程序优化的仿真器。另外，我们有一组代码模板，以帮助您开始。</p>
-<p><img src="http://bcs.duapp.com/suweyablog/first_run_wizard.png" alt="first"></p>
-<ul>
-<li>Sample导入和模板 - Android的Studio包括向导，使您能够开始新的项目模板或导入谷歌代码示例。</li>
-</ul>
-<p><img src="http://bcs.duapp.com/suweyablog/Sample_Wizard.png" alt=""></p>
-<ul>
-<li>代码编辑 - Android Studio充分利用了IntelliJ IDEA的所有智能的代码编辑功能，如先进的代码完成，重构和代码分析。</li>
-</ul>
-<p><img src="http://bcs.duapp.com/suweyablog/shadow_studio-hero-code_2x.png" alt=""></p>
-<ul>
-<li>国际字符串编辑 - 在Android Sutdio管理您的应用程序的字符串翻译</li>
-</ul>
-<p><img src="http://bcs.duapp.com/suweyablog/translations.png" alt=""></p>
-<ul>
-<li>用户界面设计 - 编辑和预览您的Android布局在多个屏幕尺寸，语言，甚至是API的版本</li>
-</ul>
-<p><img src="http://bcs.duapp.com/suweyablog/Multi-Screen_Preview.png" alt=""></p>
-<ul>
-<li>内存监视器 - 查看您的应用程序的内存占用随着时间的推移，帮助想办法提高你的应用程序的性能</li>
-</ul>
-<p><img src="http://bcs.duapp.com/suweyablog/monitor.png" alt=""></p>
-<ul>
-<li>统一的构建系统</li>
-</ul>
-<p>Android Studio使gradle作为基础构建系统，提供了很大的灵活性和可扩展性，以及建立从内部和外部的IDE的能力。这种统一的构建系统解耦Studio本身的构建，这意味着Studio的更新不会影响您构建的工作。</p>
-<p>构建系统的主要特点是：更好地处理不同类型的构建（调试与发布），或不同版本的同一应用程序的（支付与自由），多的apk处理，通过拆分，多DEX支持和依赖管理的第三方库。</p>
-<ul>
-<li>即时访问谷歌云计算服务</li>
-</ul>
-<p>Android Studio，用一个简单的方法来增加谷歌的云后端与端点到您的应用程序，以及谷歌云消息</p>
-<p><img src="http://bcs.duapp.com/suweyablog/cloud_backend.png" alt=""></p>
-<ul>
-<li>迁移和更新</li>
-</ul>
-<p>如果你是一个Eclipse用户，看看我们的迁移步骤，或者你可以在你的项目只需要导入正确的Android Studio导入向导，如下图所示：</p>
-<p><img src="http://bcs.duapp.com/suweyablog/import_eclipse_step1.png" alt=""></p>
-<p><img src="http://bcs.duapp.com/suweyablog/import_eclipse_step2.png" alt=""></p>
-<p>如果你使用的是AndroidStudio的早期版本之一，你也应该升级到1.0版，因为我们增加了许多新功能，并解决了许多错误。</p>
-<p>我们还发布了Gradle插件的1.0版本的文件格式，现在是稳定的。Android Studio和Gradle插件之间的通信现在是稳定的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2014/12/24/git-usage/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
-        
-          Git Usage
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2014/12/08/bumptech-glide/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android图片加载库：glide</div>
-      <strong class="article-nav-caption">&gt;</strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-
+</section>
+<% } %>
 
       <footer id="footer">
   <div class="outer">

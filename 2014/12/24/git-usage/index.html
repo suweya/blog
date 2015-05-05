@@ -190,150 +190,21 @@ HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历�
 		</header>				
 	</div>
 </nav>
-      <article id="post-git-usage" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/24/git-usage/" class="article-date">
-  	<time datetime="2014-12-24T06:48:11.000Z" itemprop="datePublished">12月 24 2014</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Git Usage
-    </h1>
-  
+      <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="版本回退">版本回退</h1>
-<ul>
-<li><p>要随时掌握工作区的状态，使用git status命令。</p>
-</li>
-<li><p>如果git status告诉你有文件被修改过，用git diff可以查看修改内容。</p>
-</li>
-<li><p>HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset —hard commit_id。</p>
-</li>
-<li><p>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。</p>
-</li>
-<li><p>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</p>
-</li>
-<li><p>Git跟踪并管理的是修改，而非文件</p>
-</li>
-<li><p>Git每次修改，如果不add到暂存区，那就不会加入到commit中。<br><a id="more"></a></p>
-<h1 id="撤销修改">撤销修改</h1>
-</li>
-<li><p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout — file。</p>
-</li>
-<li><p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</p>
-</li>
-<li><p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，可以通过版本回退：git reset —hard commit_id来实现，不过前提是没有推送到远程库。</p>
-</li>
-</ul>
-<h1 id="删除文件">删除文件</h1>
-<ul>
-<li><p>一般情况下，你通常直接在文件管理器中把没用的文件删了，或者用rm命令删了</p>
-</li>
-<li><p>现在你有两个选择，一是确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit：</p>
-</li>
-<li><p>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：$ git checkout — test.txt</p>
-</li>
-<li><p>命令git rm用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。</p>
-</li>
-</ul>
-<h1 id="添加远程仓库">添加远程仓库</h1>
-<ul>
-<li><p>要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；</p>
-</li>
-<li><p>关联后，使用命令git push -u origin master第一次推送master分支的所有内容；</p>
-</li>
-<li><p>此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；</p>
-</li>
-</ul>
-<h1 id="创建与合并分支">创建与合并分支</h1>
-<ul>
-<li><p>Git鼓励大量使用分支：</p>
-</li>
-<li><p>查看分支：git branch</p>
-</li>
-<li><p>创建分支：git branch <name></name></p>
-</li>
-<li><p>切换分支：git checkout <name></name></p>
-</li>
-<li><p>创建+切换分支：git checkout -b <name></name></p>
-</li>
-<li><p>合并某分支到当前分支：git merge <name></name></p>
-</li>
-<li><p>删除分支：git branch -d <name></name></p>
-</li>
-<li><p>特殊情况：当你在master分支上创建了dev分支，然后”git checkout dev”切换到dev分支上，在dev分支上修改内容，当你没有commit的时候再切换到master分支进行commit那就相当于你在master分支上做修改一样，你在再切换会dev分支的时候内容还是以前的内容。这时候通过合并（git merge master）就可以让dev分支的内容和主分支的一样了。</p>
-</li>
-<li><p>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。用git log —graph命令可以看到分支合并图。</p>
-</li>
-</ul>
-<p>参考：<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2014/12/25/android-https/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
-        
-          ﻿Security with HTTPS and SSL
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2014/12/09/android-studio-1-0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android Studio 1.0</div>
-      <strong class="article-nav-caption">&gt;</strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-
+</section>
+<% } %>
 
       <footer id="footer">
   <div class="outer">

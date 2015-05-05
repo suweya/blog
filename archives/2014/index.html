@@ -162,546 +162,174 @@
 </nav>
       
   
-    <article id="post-android-protection-level" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/30/android-protection-level/" class="article-date">
-  	<time datetime="2014-12-30T07:34:29.000Z" itemprop="datePublished">12月 30 2014</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/30/android-protection-level/">android permission protection level</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Android中对于一些需要付费、用户隐私的操作，我们都会格外小心。<br>出于安全性的考虑，应用在安装的时候都会列出需要的权限列表，在原生的ROM中对于需要付费和用户隐私的权限都会高亮提示用户，在Flyme和Miui等第三方Rom一般都会提供权限控制开关。除了系统定义好的权限，我们也可以自定义自己的权限。语法如下：</p>
-<pre><code>&lt;permission android:<span class="variable">description=</span><span class="string">"string resource"</span>
-            android:<span class="variable">icon=</span><span class="string">"drawable resource"</span>
-            android:<span class="variable">label=</span><span class="string">"string resource"</span>
-            android:<span class="variable">name=</span><span class="string">"string"</span>
-            android:<span class="variable">permissionGroup=</span><span class="string">"string"</span>
-            android:<span class="variable">protectionLevel=</span>[<span class="string">"normal"</span> | <span class="string">"dangerous"</span> | 
-                                     <span class="string">"signature"</span> | <span class="string">"signatureOrSystem"</span>] /&gt;
-</code></pre><p>
-        
-          <p class="article-more-link">
-            <a href="/2014/12/30/android-protection-level/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
-    <article id="post-android-test-sample" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/26/android-test-sample/" class="article-date">
-  	<time datetime="2014-12-26T01:30:42.000Z" itemprop="datePublished">12月 26 2014</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/26/android-test-sample/">Google&#39;s Testing Tools For Android --- Espresso</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Samples:<a href="https://github.com/googlesamples/android-testing/tree/master/espresso/BasicSample" target="_blank" rel="external">https://github.com/googlesamples/android-testing/tree/master/espresso/BasicSample</a></p>
-<h1 id="Basics">Basics</h1>
-<p>The Espresso API encourages test authors to think in terms of what a user might do while interacting with the application - locating UI elements and interacting with them. At the same time, the framework prevents direct access to activities and views of the application because holding on to these objects and operating on them off the UI thread is a major source of test flakiness. Thus, you will not see methods like getView and getCurrentActivity in the Espresso API. You can still safely operate on views by implementing your own ViewActions and ViewAssertions. </p>
-
-        
-          <p class="article-more-link">
-            <a href="/2014/12/26/android-test-sample/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
-    <article id="post-android-https" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/25/android-https/" class="article-date">
-  	<time datetime="2014-12-25T03:36:10.000Z" itemprop="datePublished">12月 25 2014</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/25/android-https/">﻿Security with HTTPS and SSL</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://developer.android.com/training/articles/security-ssl.html" target="_blank" rel="external">http://developer.android.com/training/articles/security-ssl.html</a></p>
-<p>The Secure Sockets Layer (SSL)—now technically known as Transport Layer Security (TLS)—is a common building block for encrypted communications between clients and servers. It’s possible that an application might use SSL incorrectly such that malicious entities may be able to intercept an app’s data over the network. To help you ensure that this does not happen to your app, this article highlights the common pitfalls when using secure network protocols and addresses some larger concerns about using Public-Key Infrastructure (PKI). </p>
-
-        
-          <p class="article-more-link">
-            <a href="/2014/12/25/android-https/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
-    <article id="post-git-usage" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/24/git-usage/" class="article-date">
-  	<time datetime="2014-12-24T06:48:11.000Z" itemprop="datePublished">12月 24 2014</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/24/git-usage/">Git Usage</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="版本回退">版本回退</h1>
-<ul>
-<li><p>要随时掌握工作区的状态，使用git status命令。</p>
-</li>
-<li><p>如果git status告诉你有文件被修改过，用git diff可以查看修改内容。</p>
-</li>
-<li><p>HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset —hard commit_id。</p>
-</li>
-<li><p>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。</p>
-</li>
-<li><p>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</p>
-</li>
-<li><p>Git跟踪并管理的是修改，而非文件</p>
-</li>
-<li><p>Git每次修改，如果不add到暂存区，那就不会加入到commit中。<br>
-        
-          <p class="article-more-link">
-            <a href="/2014/12/24/git-usage/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
-    <article id="post-android-studio-1-0" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/09/android-studio-1-0/" class="article-date">
-  	<time datetime="2014-12-09T08:21:54.000Z" itemprop="datePublished">12月 9 2014</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/09/android-studio-1-0/">Android Studio 1.0</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Android Studio 1.0发布啦，带来了一些新的功能。<br><img src="http://bcs.duapp.com/suweyablog/studio-logo.png" alt="Android Studio"></p>
-
-        
-          <p class="article-more-link">
-            <a href="/2014/12/09/android-studio-1-0/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
-    <article id="post-bumptech-glide" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/08/bumptech-glide/" class="article-date">
-  	<time datetime="2014-12-08T09:32:09.000Z" itemprop="datePublished">12月 8 2014</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
+
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
+</section>
+<% } %>
 
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Image/">Image</a></li></ul>
-
-    </div>
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/08/bumptech-glide/">Android图片加载库：glide</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Glide是一款Android上的快速、高效的多媒体加载和缓存组件，它可以最大性能地在Android设备上读取、解码、显示图片和视频。</p>
-<p><img src="http://bcs.duapp.com/suweyablog/glide_logo.png" alt="Glide"></p>
-
-        
-          <p class="article-more-link">
-            <a href="/2014/12/08/bumptech-glide/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
-    <article id="post-markdown-syntax" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/08/markdown-syntax/" class="article-date">
-  	<time datetime="2014-12-08T01:09:29.000Z" itemprop="datePublished">12月 8 2014</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/记录/">记录</a>
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
+
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
+</section>
+<% } %>
 
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
-
-    </div>
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/08/markdown-syntax/">Markdown语法</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>区块引用使用’&gt;’，效果如下</li>
-</ul>
-<blockquote>
-<p>This is a blockquote.<br>This is the second paragraph in the blockquote.</p>
-</blockquote>
-<ul>
-<li>Markdown 使用星号和底线来标记需要强调的区段。(#”content”, #<em>content</em>, #””content””, #<strong> </strong>)</li>
-</ul>
-<blockquote>
-<p>Some of these words <em>are emphasized</em>.<br><br>Some of these words <em>are emphasized also</em>.<br><br>Use two asterisks for <strong>strong emphasis</strong>.<br><br>Or, if you prefer, <strong>use two underscores instead</strong>.</p>
-</blockquote>
-
-        
-          <p class="article-more-link">
-            <a href="/2014/12/08/markdown-syntax/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
-    <article id="post-new-building-domain" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/07/new-building-domain/" class="article-date">
-  	<time datetime="2014-12-07T08:18:53.000Z" itemprop="datePublished">12月 7 2014</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/07/new-building-domain/">自定义域名的新方法</a>
-    </h1>
-  
+    <% if (!index && theme.duoshuo && post.comments){ %>
+<%- partial('post/duoshuo', {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %>
+<% } %>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>自定义域名的新方法</p>
-<p>A记录：域名直接映射IP，但是这个IP换成了192.30.252.153或192.30.252.154。<br>通过上面的直接映射IP的方法，Github在build会发一个警告的邮件到你的邮箱，如下内容<br>
-        
-          <p class="article-more-link">
-            <a href="/2014/12/07/new-building-domain/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-use-hexo-on-github" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/05/use-hexo-on-github/" class="article-date">
-  	<time datetime="2014-12-05T11:45:34.000Z" itemprop="datePublished">12月 5 2014</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/05/use-hexo-on-github/">使用Hexo在Github上搭建Blog</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一直在寻找和纠结在哪里写blog，虽说不怎么写，但总的有一个偶尔可以写写。<br>曾用过CSDN、OSCHINA、CNBLOG、自己搭建WordPress，不过都不是很满意。</p>
-<p>知道后面看到Hexo，感觉很轻巧，很快速几行命令就可以快速创建。<br>而且Article存储在Github上，每次写完就可上传到远程仓库上，就像写代码一样的写blog，呵呵。<br>
-        
-          <p class="article-more-link">
-            <a href="/2014/12/05/use-hexo-on-github/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-新的开始" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/05/新的开始/" class="article-date">
-  	<time datetime="2014-12-05T11:21:59.000Z" itemprop="datePublished">12月 5 2014</time>
-</a>
-      
-      
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/05/新的开始/">新的开始</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用Hexo快速的搭建自己的窝，感觉非常好！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
+</section>
+<% } %>
 
   
   
