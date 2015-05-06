@@ -463,6 +463,9 @@ a {
   #container #footer {
     margin: 10px;
   }
+  #container .ds-thread {
+    margin: 0px 10px;
+  }
 }
 .header-author {
   text-align: center;
@@ -1625,6 +1628,9 @@ pre .javascript .function {
 }
 .footer-right {
   float: right;
+}
+.ds-thread {
+  margin: 0px 40px;
 }
 .share {
   padding: 0px 75px 30px 40px;
