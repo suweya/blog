@@ -104,7 +104,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android-Animation/" style="font-size: NaNpx;">Android Animation</a><a href="/tags/Google/" style="font-size: NaNpx;">Google</a><a href="/tags/Image/" style="font-size: NaNpx;">Image</a><a href="/tags/Markdown/" style="font-size: NaNpx;">Markdown</a><a href="/tags/Plan-2015/" style="font-size: NaNpx;">Plan 2015</a>
+						<a href="/tags/Android/" style="font-size: NaNpx;">Android</a><a href="/tags/Android-Animation/" style="font-size: NaNpx;">Android Animation</a><a href="/tags/Google/" style="font-size: NaNpx;">Google</a><a href="/tags/Image/" style="font-size: NaNpx;">Image</a><a href="/tags/Markdown/" style="font-size: NaNpx;">Markdown</a><a href="/tags/Plan-2015/" style="font-size: NaNpx;">Plan 2015</a>
 					</div>
 				</section>
 				
@@ -163,6 +163,75 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-AbsListView-OnScrollListener" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/05/07/AbsListView-OnScrollListener/" class="article-date">
+  	<time datetime="2015-05-07T03:41:05.000Z" itemprop="datePublished">5月 7 2015</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/07/AbsListView-OnScrollListener/">AbsListView OnScrollListener</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>@Override
+public void onScroll(AbsListView view, int firstVisibleItem, 
+int visibleItemCount, int totalItemCount) {
+}
+
+firstVisibleItem 
+<span class="operator">the</span> index <span class="operator">of</span> <span class="operator">the</span> <span class="keyword">first</span> visible cell (ignore <span class="keyword">if</span> visibleItemCount == <span class="number">0</span>)
+ListView第一个可见单元格的Index
+
+visibleItemCount
+<span class="operator">the</span> <span class="built_in">number</span> <span class="operator">of</span> visible cells
+屏幕上可见的单元格数量
+
+totalItemCount
+<span class="operator">the</span> <span class="built_in">number</span> <span class="operator">of</span> <span class="keyword">items</span> <span class="operator">in</span> <span class="operator">the</span> list adaptor
+列表中单元格总数量
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-Protocol-Buffers" class="article article-type-post" itemscope itemprop="blogPost">
   
