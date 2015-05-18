@@ -177,6 +177,82 @@ var _hmt = _hmt || [];
 </nav>
       <div class="body-wrap">
   
+    <article id="post-FragmentTabHost" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/05/18/FragmentTabHost/" class="article-date">
+  	<time datetime="2015-05-18T03:30:28.000Z" itemprop="datePublished">5月 18 2015</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="FragmentTabHost">FragmentTabHost</h1>
+<p>标签（空格分隔）： Android Widget</p>
+<hr>
+<ul>
+<li>FragmentTabHost是TabHost的子类，是特殊的TabHost专门处理Tab中的Fragment。官方的解析如下：</li>
+</ul>
+<blockquote>
+<p>Special TabHost that allows the use of Fragment objects for its tab content. When placing this in a view hierarchy, after inflating the hierarchy you must call setup(Context, FragmentManager, int) to complete the initialization of the tab host.</p>
+</blockquote>
+<ul>
+<li>使用示例 Java</li>
+</ul>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FragmentTabs</span> <span class="keyword">extends</span> <span class="title">FragmentActivity</span> </span>{</div><div class="line">    <span class="keyword">private</span> FragmentTabHost mTabHost;</div><div class="line"></div><div class="line">    <span class="annotation">@Override</span></div><div class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line"></div><div class="line">        setContentView(R.layout.fragment_tabs);</div><div class="line">        mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);</div><div class="line">        mTabHost.setup(<span class="keyword">this</span>, getSupportFragmentManager(), R.id.realtabcontent);</div><div class="line"></div><div class="line">        mTabHost.addTab(mTabHost.newTabSpec(<span class="string">"simple"</span>).setIndicator(<span class="string">"Simple"</span>),</div><div class="line">                FragmentStackSupport.CountingFragment.class, <span class="keyword">null</span>);</div><div class="line">        mTabHost.addTab(mTabHost.newTabSpec(<span class="string">"contacts"</span>).setIndicator(<span class="string">"Contacts"</span>),</div><div class="line">                LoaderCursorSupport.CursorLoaderListFragment.class, <span class="keyword">null</span>);</div><div class="line">        mTabHost.addTab(mTabHost.newTabSpec(<span class="string">"custom"</span>).setIndicator(<span class="string">"Custom"</span>),</div><div class="line">                LoaderCustomSupport.AppListFragment.class, <span class="keyword">null</span>);</div><div class="line">        mTabHost.addTab(mTabHost.newTabSpec(<span class="string">"throttle"</span>).setIndicator(<span class="string">"Throttle"</span>),</div><div class="line">                LoaderThrottleSupport.ThrottledLoaderListFragment.class, <span class="keyword">null</span>);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<ul>
+<li>使用示例 XML</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">LinearLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></div><div class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></div><div class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></div><div class="line">    <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span></div><div class="line">    <span class="attribute">tools:context</span>=<span class="value">"net.suweya.demo.FragmentTabhostActivity"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="title">FrameLayout</span></span></div><div class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/realContent"</span></div><div class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></div><div class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"0dp"</span></div><div class="line">        <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="title">FrameLayout</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="title">android.support.v4.app.FragmentTabHost</span></span></div><div class="line">        <span class="attribute">android:id</span>=<span class="value">"@android:id/tabhost"</span></div><div class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></div><div class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></div><div class="line">        <span class="attribute">android:background</span>=<span class="value">"@android:color/holo_blue_bright"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>FragmentTabHost和TabHost的区别：<ul>
+<li>在TabHost内部的Tab的切换是通过View.VISIBLE、View.GONE来实现的</li>
+<li>在TabHost的setCurrentTab(int index)代码中是这样实现的</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">mTabSpecs.get(mCurrentTab).mContentStrategy.tabClosed();</div><div class="line"></div><div class="line">mCurrentView = spec.mContentStrategy.getContentView();</div><div class="line"></div><div class="line"><span class="javadoc">/**</span></div><div class="line"> * Specifies what you do to manage the tab content.</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">ContentStrategy</span> </span>{</div><div class="line">    View getContentView();</div><div class="line">    <span class="keyword">void</span> tabClosed();</div><div class="line">}</div><div class="line"></div><div class="line">ContentStrategy 的一个实现</div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewIdContentStrategy</span> <span class="keyword">implements</span> <span class="title">ContentStrategy</span> </span>{</div><div class="line"></div><div class="line">        <span class="keyword">private</span> <span class="keyword">final</span> View mView;</div><div class="line"></div><div class="line">        <span class="keyword">private</span> <span class="title">ViewIdContentStrategy</span>(<span class="keyword">int</span> viewId) {</div><div class="line">            mView = mTabContent.findViewById(viewId);</div><div class="line">            <span class="keyword">if</span> (mView != <span class="keyword">null</span>) {</div><div class="line">                mView.setVisibility(View.GONE);</div><div class="line">            } <span class="keyword">else</span> {</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Could not create tab content because "</span> +</div><div class="line">                        <span class="string">"could not find view with id "</span> + viewId);</div><div class="line">            }</div><div class="line">        }</div><div class="line"></div><div class="line">        <span class="keyword">public</span> View <span class="title">getContentView</span>() {</div><div class="line">            <span class="comment">//显示Tab</span></div><div class="line">            mView.setVisibility(View.VISIBLE);</div><div class="line">            <span class="keyword">return</span> mView;</div><div class="line">        }</div><div class="line"></div><div class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">tabClosed</span>() {</div><div class="line">            <span class="comment">//隐藏Tab</span></div><div class="line">            mView.setVisibility(View.GONE);</div><div class="line">        }</div><div class="line">    }</div></pre></td></tr></table></figure>
+
+<ul>
+<li>在FragmentTabHost中是这样切换的,FragmentTabHost实现了TabHost.OnTabChangeListener</li>
+</ul>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initFragmentTabHost</span>(Context context, AttributeSet attrs) {</div><div class="line">        TypedArray a = context.obtainStyledAttributes(attrs,</div><div class="line">                <span class="keyword">new</span> <span class="keyword">int</span>[] { android.R.attr.inflatedId }, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">        mContainerId = a.getResourceId(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">        a.recycle();</div><div class="line">        <span class="comment">//初始化的时候注册监听</span></div><div class="line">        <span class="keyword">super</span>.setOnTabChangedListener(<span class="keyword">this</span>);</div><div class="line">    }</div><div class="line"></div><div class="line"><span class="annotation">@Override</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTabChanged</span>(String tabId) {</div><div class="line">        <span class="keyword">if</span> (mAttached) {</div><div class="line">            <span class="comment">//执行FragmentTransaction</span></div><div class="line">            FragmentTransaction ft = doTabChanged(tabId, <span class="keyword">null</span>);</div><div class="line">            <span class="keyword">if</span> (ft != <span class="keyword">null</span>) {</div><div class="line">                ft.commit();</div><div class="line">            }</div><div class="line">        }</div><div class="line">        <span class="keyword">if</span> (mOnTabChangeListener != <span class="keyword">null</span>) {</div><div class="line">            mOnTabChangeListener.onTabChanged(tabId);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    </div><div class="line">    <span class="comment">//主要的逻辑都在doTabChanged方法中</span></div><div class="line">    <span class="keyword">private</span> FragmentTransaction <span class="title">doTabChanged</span>(String tabId, FragmentTransaction ft) {</div><div class="line">        TabInfo newTab = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;mTabs.size(); i++) {</div><div class="line">            TabInfo tab = mTabs.get(i);</div><div class="line">            <span class="keyword">if</span> (tab.tag.equals(tabId)) {</div><div class="line">                newTab = tab;</div><div class="line">            }</div><div class="line">        }</div><div class="line">        <span class="keyword">if</span> (newTab == <span class="keyword">null</span>) {</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"No tab known for tag "</span> + tabId);</div><div class="line">        }</div><div class="line">        <span class="keyword">if</span> (mLastTab != newTab) {</div><div class="line">            <span class="keyword">if</span> (ft == <span class="keyword">null</span>) {</div><div class="line">                ft = mFragmentManager.beginTransaction();</div><div class="line">            }</div><div class="line">            <span class="keyword">if</span> (mLastTab != <span class="keyword">null</span>) {</div><div class="line">                <span class="keyword">if</span> (mLastTab.fragment != <span class="keyword">null</span>) {</div><div class="line">                    <span class="comment">//分离Fragment</span></div><div class="line">                    ft.detach(mLastTab.fragment);</div><div class="line">                }</div><div class="line">            }</div><div class="line">            <span class="keyword">if</span> (newTab != <span class="keyword">null</span>) {</div><div class="line">                <span class="comment">//添加Fragment</span></div><div class="line">                <span class="keyword">if</span> (newTab.fragment == <span class="keyword">null</span>) {</div><div class="line">                    newTab.fragment = Fragment.instantiate(mContext,</div><div class="line">                            newTab.clss.getName(), newTab.args);</div><div class="line">                    ft.add(mContainerId, newTab.fragment, newTab.tag);</div><div class="line">                } <span class="keyword">else</span> {</div><div class="line">                    ft.attach(newTab.fragment);</div><div class="line">                }</div><div class="line">            }</div><div class="line"></div><div class="line">            mLastTab = newTab;</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> ft;</div><div class="line">    }</div></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>可以看到在FragmentTabHost中摘要用FragmentTransaction来attach和detach Fragment。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-科学上网" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -686,67 +762,6 @@ totalItemCount
       
         <p class="article-more-link">
           <a  href="/2015/01/04/gson-usage/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-android-protection-level" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/30/android-protection-level/" class="article-date">
-  	<time datetime="2014-12-30T07:34:29.000Z" itemprop="datePublished">12月 30 2014</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/30/android-protection-level/">android permission protection level</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Android中对于一些需要付费、用户隐私的操作，我们都会格外小心。<br>出于安全性的考虑，应用在安装的时候都会列出需要的权限列表，在原生的ROM中对于需要付费和用户隐私的权限都会高亮提示用户，在Flyme和Miui等第三方Rom一般都会提供权限控制开关。除了系统定义好的权限，我们也可以自定义自己的权限。语法如下：</p>
-<pre><code>&lt;permission android:<span class="variable">description=</span><span class="string">"string resource"</span>
-            android:<span class="variable">icon=</span><span class="string">"drawable resource"</span>
-            android:<span class="variable">label=</span><span class="string">"string resource"</span>
-            android:<span class="variable">name=</span><span class="string">"string"</span>
-            android:<span class="variable">permissionGroup=</span><span class="string">"string"</span>
-            android:<span class="variable">protectionLevel=</span>[<span class="string">"normal"</span> | <span class="string">"dangerous"</span> | 
-                                     <span class="string">"signature"</span> | <span class="string">"signatureOrSystem"</span>] /&gt;
-</code></pre><p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2014/12/30/android-protection-level/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
