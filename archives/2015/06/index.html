@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015 | 迷途</title>
+  <title>Archives: 2015/6 | 迷途</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="迷途">
 <meta property="og:type" content="website">
 <meta property="og:title" content="迷途">
-<meta property="og:url" content="http://blog.suweya.net/archives/2015/page/2/">
+<meta property="og:url" content="http://blog.suweya.net/archives/2015/06/">
 <meta property="og:site_name" content="迷途">
 <meta property="og:description" content="迷途">
 <meta name="twitter:card" content="summary">
@@ -177,11 +177,11 @@ var _hmt = _hmt || [];
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Google-Guava" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-使用RecyclerView" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/03/26/Google-Guava/" class="article-date">
-  	<time datetime="2015-03-26T01:32:10.000Z" itemprop="datePublished">3月 26 2015</time>
+      <a href="/2015/06/08/使用RecyclerView/" class="article-date">
+  	<time datetime="2015-06-08T13:05:15.000Z" itemprop="datePublished">6月 8 2015</time>
 </a>
     </div>
   
@@ -194,7 +194,7 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/26/Google-Guava/">Google Guava</a>
+      <a class="article-title" href="/2015/06/08/使用RecyclerView/">使用RecyclerView</a>
     </h1>
   
 
@@ -203,69 +203,16 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Google Guava Collections 使用介绍<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/03/26/Google-Guava/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-retrofit" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/03/02/retrofit/" class="article-date">
-  	<time datetime="2015-03-02T09:20:03.000Z" itemprop="datePublished">3月 2 2015</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/02/retrofit/">retrofit</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Retrofit_Usage">Retrofit Usage</h1>
-<hr>
-<p>使用步骤</p>
+        <h3 id="概述">概述</h3>
+<p>RecyclerView被认为是ListView的替代Widget。因为RecyclerView是可扩展、灵活的Widget。尤其是他提供了水平和垂直的LayoutManager。</p>
+<h3 id="和ListView的对比">和ListView的对比</h3>
 <ul>
-<li><p>定义REST API接口</p>
-<pre><code>  <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">GitHubService</span> </span>{
-    <span class="annotation">@GET</span>(<span class="string">"/users/{user}/repos"</span>)
-    List&lt;Repo&gt; listRepos(<span class="annotation">@Path</span>(<span class="string">"user"</span>) String user);
-  }
-</code></pre></li>
+<li>在Adapter中要求使用ViewHolder模式</li>
+<li>可定制的Item布局(ListView是提供了垂直布局，RecyclerView提供了水平、垂直的Item布局)</li>
+<li>简单的Item动画(RecyclerView.ItemAnimator)</li>
+<li>数据源要求实现RecyclerView.Adapter</li>
+<li>Item的装饰RecyclerView.ItemDecoration</li>
+<li>Item的点击事件RecyclerView.OnItemTouchListener</li>
 </ul>
 
       
@@ -273,11 +220,15 @@ var _hmt = _hmt || [];
     
     <div class="article-info article-info-index">
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a  href="/2015/03/02/retrofit/#more">more >></a>
+          <a  href="/2015/06/08/使用RecyclerView/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -294,121 +245,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-tasks-and-back-stack" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/01/28/tasks-and-back-stack/" class="article-date">
-  	<time datetime="2015-01-28T01:11:33.000Z" itemprop="datePublished">1月 28 2015</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/28/tasks-and-back-stack/">Tasks and Back Stack</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Using_the_manifest_file">Using the manifest file</h2>
-<p>When declaring an activity in your manifest file, you can specify how the activity should associate with a task using the <activity> element’s launchMode attribute.</activity></p>
-<p>The launchMode attribute specifies an instruction on how the activity should be launched into a task. There are four different launch modes you can assign to the launchMode attribute:</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/01/28/tasks-and-back-stack/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-gson-usage" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/01/04/gson-usage/" class="article-date">
-  	<time datetime="2015-01-04T07:15:32.000Z" itemprop="datePublished">1月 4 2015</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/04/gson-usage/">Gson usage</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Using_Gson">Using Gson</h1>
-<p>The primary class to use is Gson which you can just create by calling new Gson(). There is also a class GsonBuilder available that can be used to create a Gson instance with various settings like version control and so on. </p>
-<p>The Gson instance does not maintain any state while invoking Json operations. So, you are free to reuse the same object for multiple Json serialization and deserialization operations.<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/01/04/gson-usage/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2015/">&laquo; Prev</a><a class="page-number" href="/archives/2015/">1</a><span class="page-number current">2</span>
-    </nav>
   
 </div>
       <footer id="footer">

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用RecyclerView | 迷途</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概述
+RecyclerView被认为是ListView的替代Widget。因为RecyclerView是可扩展、灵活的Widget。尤其是他提供了水平和垂直的LayoutManager。
+和ListView的对比
+
+在Adapter中要求使用ViewHolder模式
+可定制的Item布局(ListView是提供了垂直布局，RecyclerView提供了水平、垂直的Item布局)
+简单的Item动画">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用RecyclerView">
+<meta property="og:url" content="http://blog.suweya.net/2015/06/08/使用RecyclerView/">
+<meta property="og:site_name" content="迷途">
+<meta property="og:description" content="概述
+RecyclerView被认为是ListView的替代Widget。因为RecyclerView是可扩展、灵活的Widget。尤其是他提供了水平和垂直的LayoutManager。
+和ListView的对比
+
+在Adapter中要求使用ViewHolder模式
+可定制的Item布局(ListView是提供了垂直布局，RecyclerView提供了水平、垂直的Item布局)
+简单的Item动画">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用RecyclerView">
+<meta name="twitter:description" content="概述
+RecyclerView被认为是ListView的替代Widget。因为RecyclerView是可扩展、灵活的Widget。尤其是他提供了水平和垂直的LayoutManager。
+和ListView的对比
+
+在Adapter中要求使用ViewHolder模式
+可定制的Item布局(ListView是提供了垂直布局，RecyclerView提供了水平、垂直的Item布局)
+简单的Item动画">
+
+  
+    <link rel="alternative" href="/atom.xml" title="迷途" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?5ff76dba172ffefae7010fd357566dc1";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="http://bcs.duapp.com/suweyablog/logo.gif" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">迷途</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/suweya" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/suweya" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://plus.google.com/101772966739687843526/posts" title="google">google</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 20.00px;">Android</a><a href="/tags/Android-Animation/" style="font-size: 10.00px;">Android Animation</a><a href="/tags/Android-Widget/" style="font-size: 10.00px;">Android Widget</a><a href="/tags/Google/" style="font-size: 10.00px;">Google</a><a href="/tags/Image/" style="font-size: 10.00px;">Image</a><a href="/tags/Markdown/" style="font-size: 10.00px;">Markdown</a><a href="/tags/Plan-2015/" style="font-size: 10.00px;">Plan 2015</a><a href="/tags/Polymer/" style="font-size: 10.00px;">Polymer</a><a href="/tags/Widget/" style="font-size: 10.00px;">Widget</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">记录学习点滴   Email -&gt; suweya@foxmail.com</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">迷途</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://bcs.duapp.com/suweyablog/logo.gif" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">迷途</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/suweya" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/suweya" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://plus.google.com/101772966739687843526/posts" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-使用RecyclerView" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/08/使用RecyclerView/" class="article-date">
+  	<time datetime="2015-06-08T13:05:15.000Z" itemprop="datePublished">6月 8 2015</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用RecyclerView
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="概述">概述</h3>
+<p>RecyclerView被认为是ListView的替代Widget。因为RecyclerView是可扩展、灵活的Widget。尤其是他提供了水平和垂直的LayoutManager。</p>
+<h3 id="和ListView的对比">和ListView的对比</h3>
+<ul>
+<li>在Adapter中要求使用ViewHolder模式</li>
+<li>可定制的Item布局(ListView是提供了垂直布局，RecyclerView提供了水平、垂直的Item布局)</li>
+<li>简单的Item动画(RecyclerView.ItemAnimator)</li>
+<li>数据源要求实现RecyclerView.Adapter</li>
+<li>Item的装饰RecyclerView.ItemDecoration</li>
+<li>Item的点击事件RecyclerView.OnItemTouchListener</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="Layout_Managers">Layout Managers</h3>
+<p>RecyclerView 提供了几种内置的LayoutManager</p>
+<ol>
+<li>LinearLayoutManager 水平或垂直展示Item</li>
+<li>GridLayoutManager 表格</li>
+<li>StaggeredGridLayoutManager 瀑布流<br>你也可以自定义LayoutManager，只需要继承RecyclerView.LayoutManager</li>
+</ol>
+<h3 id="使用">使用</h3>
+<ul>
+<li>引入support v7 recyclerview</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">dependencies</span> {</div><div class="line">    ...</div><div class="line">    <span class="keyword">compile</span> <span class="string">'com.android.support:recyclerview-v7:21.0.+'</span></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<ul>
+<li>添加布局文件</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="title">android.support.v7.widget.RecyclerView</span></span></div><div class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/recyclerView"</span></div><div class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></div><div class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></div><div class="line">        <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span></div><div class="line">        <span class="attribute">tools:listitem</span>=<span class="value">"@layout/item_demo_01"</span> /&gt;</div></pre></td></tr></table></figure>
+
+<ul>
+<li>创建Adapter</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleRecyclerAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">SimpleRecyclerAdapter</span>.<span class="title">SimpleItemViewHolder</span>&gt; </span>{</div><div class="line">		<span class="keyword">private</span> List&lt;String&gt; items;</div><div class="line"></div><div class="line">		<span class="comment">// Provide a reference to the views for each data item</span></div><div class="line">		<span class="comment">// Provide access to all the views for a data item in a view holder</span></div><div class="line">		<span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleItemViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>{</div><div class="line">			TextView label;</div><div class="line"></div><div class="line">			<span class="keyword">public</span> <span class="title">SimpleItemViewHolder</span>(View itemView) {</div><div class="line">				<span class="keyword">super</span>(itemView);</div><div class="line">				label = (TextView) itemView.findViewById(android.R.id.text1);</div><div class="line">			}</div><div class="line">		}</div><div class="line">		</div><div class="line">		<span class="comment">// Provide a suitable constructor (depends on the kind of dataset)</span></div><div class="line">		<span class="keyword">public</span> <span class="title">SimpleRecyclerAdapter</span>(List&lt;String&gt; items) {</div><div class="line">			<span class="keyword">this</span>.items = items;</div><div class="line">		}</div><div class="line">              </div><div class="line">		<span class="comment">// Return the size of your dataset (invoked by the layout manager)</span></div><div class="line">		<span class="annotation">@Override</span></div><div class="line">		<span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span>() {</div><div class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.items.size();</div><div class="line">		}</div><div class="line">               </div><div class="line">                <span class="comment">// Create new items (invoked by the layout manager)</span></div><div class="line">                <span class="comment">// Usually involves inflating a layout from XML and returning the holder</span></div><div class="line">		<span class="annotation">@Override</span></div><div class="line">		<span class="keyword">public</span> SimpleItemViewHolder <span class="title">onCreateViewHolder</span>(ViewGroup viewGroup, <span class="keyword">int</span> viewType) {</div><div class="line">	            View itemView = LayoutInflater.from(viewGroup.getContext()).</div><div class="line">	                inflate(android.R.layout.simple_list_item_1, viewGroup, <span class="keyword">false</span>);</div><div class="line">	            <span class="keyword">return</span> <span class="keyword">new</span> SimpleItemViewHolder(itemView);</div><div class="line">		}</div><div class="line">		</div><div class="line">		<span class="comment">// Replace the contents of a view (invoked by the layout manager)</span></div><div class="line">                <span class="comment">// Involves populating data into the item through holder</span></div><div class="line">		<span class="annotation">@Override</span></div><div class="line">		<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span>(SimpleItemViewHolder viewHolder, <span class="keyword">int</span> position) {</div><div class="line">			String item = items.get(position);</div><div class="line">			viewHolder.label.setText(item);</div><div class="line">		}</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+<ul>
+<li>构建RecyclerView</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>{</div><div class="line">	<span class="keyword">private</span> RecyclerView recyclerView;</div><div class="line"></div><div class="line">	<span class="annotation">@Override</span></div><div class="line">	<span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">		<span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">		setContentView(R.layout.activity_main);</div><div class="line">		recyclerView = (RecyclerView) findViewById(R.id.recyclerView);</div><div class="line">		<span class="comment">// Setup layout manager for items</span></div><div class="line">		LinearLayoutManager layoutManager = <span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>);</div><div class="line">                <span class="comment">// Control orientation of the items</span></div><div class="line">		layoutManager.setOrientation(LinearLayoutManager.VERTICAL);</div><div class="line">		layoutManager.scrollToPosition(<span class="number">0</span>);</div><div class="line">                <span class="comment">// Attach layout manager</span></div><div class="line">		recyclerView.setLayoutManager(layoutManager);</div><div class="line">		<span class="comment">// Bind adapter to recycler</span></div><div class="line">		ArrayList&lt;String&gt; items = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">		SimpleRecyclerAdapter aItems = <span class="keyword">new</span> SimpleRecyclerAdapter(items);</div><div class="line">		recyclerView.setAdapter(aItems);</div><div class="line">     }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<ul>
+<li>设置Item Decorations</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">RecyclerView.ItemDecoration itemDecoration =</div><div class="line">    <span class="keyword">new</span> DividerItemDecoration(<span class="keyword">this</span>, DividerItemDecoration.VERTICAL_LIST);</div><div class="line">recyclerView.addItemDecoration(itemDecoration);</div></pre></td></tr></table></figure>
+
+<ul>
+<li>Item Animations</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// this is the default; </span></div><div class="line"><span class="comment">// this call is actually only necessary with custom ItemAnimators</span></div><div class="line">recyclerView.setItemAnimator(<span class="keyword">new</span> DefaultItemAnimator());</div></pre></td></tr></table></figure>
+
+<ul>
+<li>Item 点击事件</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">recyclerView.addOnItemTouchListener(<span class="keyword">new</span> OnItemTouchListener() {</div><div class="line">			</div><div class="line">	<span class="annotation">@Override</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTouchEvent</span>(RecyclerView recycler, MotionEvent event) {</div><div class="line">				</div><div class="line">	}</div><div class="line">			</div><div class="line">	<span class="annotation">@Override</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span>(RecyclerView recycler, MotionEvent event) {</div><div class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">	}</div><div class="line">});</div></pre></td></tr></table></figure>
+
+<ul>
+<li>固定大小以获取更好的性能</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// allows for optimizations if all item views are of the same size:</span></div><div class="line">recyclerView.setHasFixedSize(<span class="keyword">true</span>);</div></pre></td></tr></table></figure>
+
+<ul>
+<li>处理点击事件<br><a href="http://stackoverflow.com/questions/24885223/why-doesnt-recyclerview-have-onitemclicklistener-and-how-recyclerview-is-dif/24933117#24933117" target="_blank" rel="external">RecyclerView Item click</a><br><a href="http://stackoverflow.com/questions/26245139/how-to-create-recyclerview-with-multiple-view-type" target="_blank" rel="external">getItemViewType()</a></li>
+</ul>
+<h3 id="参考">参考</h3>
+<ul>
+<li><a href="https://guides.codepath.com/android/Using-the-RecyclerView#references" target="_blank" rel="external">https://guides.codepath.com/android/Using-the-RecyclerView#references</a></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/10/科学上网/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          科学上网
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/05/28/Android Dialog 实现 ActionSheet 的效果/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android Dialog 实现 ActionSheet 的效果</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-使用RecyclerView" data-title="使用RecyclerView" data-url="http://blog.suweya.net/2015/06/08/使用RecyclerView/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'suweya'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+  </section>
+  
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 迷途
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+
+  </div>
+</body>
+</html>
