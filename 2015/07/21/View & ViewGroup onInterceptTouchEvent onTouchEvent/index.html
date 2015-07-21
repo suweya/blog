@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>科学上网 | 迷途</title>
+  <title>View &amp; ViewGroup onInterceptTouchEvent onTouchEvent | 迷途</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="链接： http://honx.in/_VU1x6YkWGiBqItL1">
+  <meta name="description" content="View &amp; ViewGroup TouchEvent的传递顺序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="科学上网">
-<meta property="og:url" content="http://blog.suweya.net/2016/05/10/科学上网/">
+<meta property="og:title" content="View & ViewGroup onInterceptTouchEvent onTouchEvent">
+<meta property="og:url" content="http://blog.suweya.net/2015/07/21/View & ViewGroup onInterceptTouchEvent onTouchEvent/">
 <meta property="og:site_name" content="迷途">
-<meta property="og:description" content="链接： http://honx.in/_VU1x6YkWGiBqItL1">
+<meta property="og:description" content="View &amp; ViewGroup TouchEvent的传递顺序">
+<meta property="og:image" content="http://7xjc23.com1.z0.glb.clouddn.com/touch_event_1.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="科学上网">
-<meta name="twitter:description" content="链接： http://honx.in/_VU1x6YkWGiBqItL1">
+<meta name="twitter:title" content="View & ViewGroup onInterceptTouchEvent onTouchEvent">
+<meta name="twitter:description" content="View &amp; ViewGroup TouchEvent的传递顺序">
 
   
     <link rel="alternative" href="/atom.xml" title="迷途" type="application/atom+xml">
@@ -175,11 +176,11 @@ var _hmt = _hmt || [];
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-科学上网" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-View &amp; ViewGroup onInterceptTouchEvent onTouchEvent" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/10/科学上网/" class="article-date">
-  	<time datetime="2016-05-10T14:13:40.000Z" itemprop="datePublished">5月 10 2016</time>
+      <a href="/2015/07/21/View & ViewGroup onInterceptTouchEvent onTouchEvent/" class="article-date">
+  	<time datetime="2015-07-21T08:30:40.000Z" itemprop="datePublished">7月 21 2015</time>
 </a>
     </div>
   
@@ -192,7 +193,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      科学上网
+      View &amp; ViewGroup onInterceptTouchEvent onTouchEvent
     </h1>
   
 
@@ -200,6 +201,10 @@ var _hmt = _hmt || [];
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -208,7 +213,30 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>链接： <a href="http://honx.in/_VU1x6YkWGiBqItL1" target="_blank" rel="external">http://honx.in/_VU1x6YkWGiBqItL1</a></p>
+        <p>View &amp; ViewGroup TouchEvent的传递顺序<br><a id="more"></a></p>
+<p><img src="http://7xjc23.com1.z0.glb.clouddn.com/touch_event_1.png" alt="Touch_Event"></p>
+<ul>
+<li>默认情况下点击上图中1的位置时，日志如下</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">OneLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">OneLayout﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>点击位置3：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">OneLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">TwoLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">CustomTextView﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">TwoLayout﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">OneLayout﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>当将第一层的Layout也就是OneLayout的onInterceptTouchEvent返回true。则会拦截事件，OneLayout底下的View和ViewGroup将不会收到任何事件</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">OneLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">OneLayout﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div></pre></td></tr></table></figure>
+
+
+<ul>
+<li>如果将CustomTextView的onTouchEvent返回true，代表TextView已经处理此事件，不需要再往上传递事件。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">OneLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">TwoLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">CustomTextView﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">OneLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">1</span></div><div class="line">TwoLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">1</span></div><div class="line">CustomTextView﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">1</span></div></pre></td></tr></table></figure>
+
+
 
       
     </div>
@@ -218,9 +246,18 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
+    <a href="/2016/05/10/科学上网/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          科学上网
+        
+      </div>
+    </a>
   
-    <a href="/2015/07/21/View & ViewGroup onInterceptTouchEvent onTouchEvent/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">View &amp; ViewGroup onInterceptTouchEvent onTouchEvent</div>
+  
+    <a href="/2015/06/08/使用RecyclerView/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用RecyclerView</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -249,7 +286,7 @@ var _hmt = _hmt || [];
 
   <section id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="post-科学上网" data-title="科学上网" data-url="http://blog.suweya.net/2016/05/10/科学上网/"></div>
+    <div class="ds-thread" data-thread-key="post-View &amp; ViewGroup onInterceptTouchEvent onTouchEvent" data-title="View &amp; ViewGroup onInterceptTouchEvent onTouchEvent" data-url="http://blog.suweya.net/2015/07/21/View &amp; ViewGroup onInterceptTouchEvent onTouchEvent/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
