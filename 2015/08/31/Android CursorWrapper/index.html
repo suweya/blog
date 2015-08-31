@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>View &amp; ViewGroup onInterceptTouchEvent onTouchEvent | 迷途</title>
+  <title>Android CursorWrapper | 迷途</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="View &amp; ViewGroup TouchEvent的传递顺序">
+  <meta name="description" content="Wrapper class for Cursor that delegates all calls to the actual cursor object. The primary use for this class is to extend a cursor while overriding only a subset of its methods.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="View & ViewGroup onInterceptTouchEvent onTouchEvent">
-<meta property="og:url" content="http://blog.suweya.net/2015/07/21/View & ViewGroup onInterceptTouchEvent onTouchEvent/">
+<meta property="og:title" content="Android CursorWrapper">
+<meta property="og:url" content="http://blog.suweya.net/2015/08/31/Android CursorWrapper/">
 <meta property="og:site_name" content="迷途">
-<meta property="og:description" content="View &amp; ViewGroup TouchEvent的传递顺序">
-<meta property="og:image" content="http://7xjc23.com1.z0.glb.clouddn.com/touch_event_1.png">
+<meta property="og:description" content="Wrapper class for Cursor that delegates all calls to the actual cursor object. The primary use for this class is to extend a cursor while overriding only a subset of its methods.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="View & ViewGroup onInterceptTouchEvent onTouchEvent">
-<meta name="twitter:description" content="View &amp; ViewGroup TouchEvent的传递顺序">
+<meta name="twitter:title" content="Android CursorWrapper">
+<meta name="twitter:description" content="Wrapper class for Cursor that delegates all calls to the actual cursor object. The primary use for this class is to extend a cursor while overriding only a subset of its methods.">
 
   
     <link rel="alternative" href="/atom.xml" title="迷途" type="application/atom+xml">
@@ -176,11 +175,11 @@ var _hmt = _hmt || [];
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-View &amp; ViewGroup onInterceptTouchEvent onTouchEvent" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Android CursorWrapper" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/21/View & ViewGroup onInterceptTouchEvent onTouchEvent/" class="article-date">
-  	<time datetime="2015-07-21T08:30:40.000Z" itemprop="datePublished">7月 21 2015</time>
+      <a href="/2015/08/31/Android CursorWrapper/" class="article-date">
+  	<time datetime="2015-08-31T02:30:40.000Z" itemprop="datePublished">8月 31 2015</time>
 </a>
     </div>
   
@@ -193,7 +192,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      View &amp; ViewGroup onInterceptTouchEvent onTouchEvent
+      Android CursorWrapper
     </h1>
   
 
@@ -213,29 +212,15 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>View &amp; ViewGroup TouchEvent的传递顺序<br><a id="more"></a></p>
-<p><img src="http://7xjc23.com1.z0.glb.clouddn.com/touch_event_1.png" alt="Touch_Event"></p>
-<ul>
-<li>默认情况下点击上图中1的位置时，日志如下</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">OneLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">OneLayout﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div></pre></td></tr></table></figure>
+        <blockquote>
+<p>Wrapper class for Cursor that delegates all calls to the actual cursor object. The primary use for this class is to extend a cursor while overriding only a subset of its methods.</p>
+</blockquote>
+<a id="more"></a>
 
 <ul>
-<li>点击位置3：</li>
+<li>Example</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">OneLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">TwoLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">CustomTextView﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">TwoLayout﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">OneLayout﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div></pre></td></tr></table></figure>
-
-<ul>
-<li>当将第一层的Layout也就是OneLayout的onInterceptTouchEvent返回true。则会拦截事件，OneLayout底下的View和ViewGroup将不会收到任何事件</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">OneLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">OneLayout﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div></pre></td></tr></table></figure>
-
-
-<ul>
-<li>如果将CustomTextView的onTouchEvent返回true，代表TextView已经处理此事件，不需要再往上传递事件。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">OneLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">TwoLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">CustomTextView﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">0</span></div><div class="line">OneLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">1</span></div><div class="line">TwoLayout﹕ onInterceptTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">1</span></div><div class="line">CustomTextView﹕ onTouchEvent & <span class="keyword">default</span> <span class="keyword">return</span> -&gt; <span class="keyword">false</span> & action -&gt; <span class="number">1</span></div></pre></td></tr></table></figure>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="javadoc">/**</span></div><div class="line">     * A convenience class to wrap a cursor that returns rows from the "run" table.</div><div class="line">     * The {@link getRun()} method will give you a Run instance representing the current row.</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">RunCursor</span> <span class="keyword">extends</span> <span class="title">CursorWrapper</span> </span>{</div><div class="line">        </div><div class="line">        <span class="keyword">public</span> <span class="title">RunCursor</span>(Cursor c) {</div><div class="line">            <span class="keyword">super</span>(c);</div><div class="line">        }</div><div class="line">        </div><div class="line">        <span class="javadoc">/**</span></div><div class="line">         * Returns a Run object configured for the current row, or null if the current row is invalid.</div><div class="line">         */</div><div class="line">        <span class="keyword">public</span> Run <span class="title">getRun</span>() {</div><div class="line">            <span class="keyword">if</span> (isBeforeFirst() || isAfterLast())</div><div class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">            Run run = <span class="keyword">new</span> Run();</div><div class="line">            run.setId(getLong(getColumnIndex(COLUMN_RUN_ID)));</div><div class="line">            run.setStartDate(<span class="keyword">new</span> Date(getLong(getColumnIndex(COLUMN_RUN_START_DATE))));</div><div class="line">            <span class="keyword">return</span> run;</div><div class="line">        }</div><div class="line">    }</div></pre></td></tr></table></figure>
 
 
       
@@ -246,18 +231,18 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2015/08/31/Android CursorWrapper/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/05/10/科学上网/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Android CursorWrapper
+          科学上网
         
       </div>
     </a>
   
   
-    <a href="/2015/06/08/使用RecyclerView/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用RecyclerView</div>
+    <a href="/2015/07/21/View & ViewGroup onInterceptTouchEvent onTouchEvent/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">View &amp; ViewGroup onInterceptTouchEvent onTouchEvent</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -286,7 +271,7 @@ var _hmt = _hmt || [];
 
   <section id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="post-View &amp; ViewGroup onInterceptTouchEvent onTouchEvent" data-title="View &amp; ViewGroup onInterceptTouchEvent onTouchEvent" data-url="http://blog.suweya.net/2015/07/21/View &amp; ViewGroup onInterceptTouchEvent onTouchEvent/"></div>
+    <div class="ds-thread" data-thread-key="post-Android CursorWrapper" data-title="Android CursorWrapper" data-url="http://blog.suweya.net/2015/08/31/Android CursorWrapper/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
