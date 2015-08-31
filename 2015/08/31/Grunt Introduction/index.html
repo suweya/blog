@@ -3,20 +3,38 @@
 <head>
   <meta charset="utf-8">
   
-  <title>android permission protection level | 迷途</title>
+  <title>Grunt Introduction | 迷途</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在Android中对于一些需要付费、用户隐私的操作，我们都会格外小心。出于安全性的考虑，应用在安装的时候都会列出需要的权限列表，在原生的ROM中对于需要付费和用户隐私的权限都会高亮提示用户，在Flyme和Miui等第三方Rom一般都会提供权限控制开关。除了系统定义好的权限，我们也可以自定义自己的权限。语法如下：
-&lt;permission android:description='string">
+  <meta name="description" content="通过npm安装grunt-cli到全局
+
+1npm install -g grunt-cli
+
+
+生成package.json
+
+1npm init">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android permission protection level">
-<meta property="og:url" content="http://blog.suweya.net/2014/12/30/android-protection-level/">
+<meta property="og:title" content="Grunt Introduction">
+<meta property="og:url" content="http://blog.suweya.net/2015/08/31/Grunt Introduction/">
 <meta property="og:site_name" content="迷途">
-<meta property="og:description" content="在Android中对于一些需要付费、用户隐私的操作，我们都会格外小心。出于安全性的考虑，应用在安装的时候都会列出需要的权限列表，在原生的ROM中对于需要付费和用户隐私的权限都会高亮提示用户，在Flyme和Miui等第三方Rom一般都会提供权限控制开关。除了系统定义好的权限，我们也可以自定义自己的权限。语法如下：
-&lt;permission android:description='string">
+<meta property="og:description" content="通过npm安装grunt-cli到全局
+
+1npm install -g grunt-cli
+
+
+生成package.json
+
+1npm init">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android permission protection level">
-<meta name="twitter:description" content="在Android中对于一些需要付费、用户隐私的操作，我们都会格外小心。出于安全性的考虑，应用在安装的时候都会列出需要的权限列表，在原生的ROM中对于需要付费和用户隐私的权限都会高亮提示用户，在Flyme和Miui等第三方Rom一般都会提供权限控制开关。除了系统定义好的权限，我们也可以自定义自己的权限。语法如下：
-&lt;permission android:description='string">
+<meta name="twitter:title" content="Grunt Introduction">
+<meta name="twitter:description" content="通过npm安装grunt-cli到全局
+
+1npm install -g grunt-cli
+
+
+生成package.json
+
+1npm init">
 
   
     <link rel="alternative" href="/atom.xml" title="迷途" type="application/atom+xml">
@@ -178,11 +196,11 @@ var _hmt = _hmt || [];
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-android-protection-level" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Grunt Introduction" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/12/30/android-protection-level/" class="article-date">
-  	<time datetime="2014-12-30T07:34:29.000Z" itemprop="datePublished">12月 30 2014</time>
+      <a href="/2015/08/31/Grunt Introduction/" class="article-date">
+  	<time datetime="2015-08-31T02:50:00.000Z" itemprop="datePublished">8月 31 2015</time>
 </a>
     </div>
   
@@ -195,7 +213,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      android permission protection level
+      Grunt Introduction
     </h1>
   
 
@@ -203,6 +221,10 @@ var _hmt = _hmt || [];
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -211,20 +233,40 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在Android中对于一些需要付费、用户隐私的操作，我们都会格外小心。<br>出于安全性的考虑，应用在安装的时候都会列出需要的权限列表，在原生的ROM中对于需要付费和用户隐私的权限都会高亮提示用户，在Flyme和Miui等第三方Rom一般都会提供权限控制开关。除了系统定义好的权限，我们也可以自定义自己的权限。语法如下：</p>
-<pre><code>&lt;permission android:<span class="variable">description=</span><span class="string">"string resource"</span>
-            android:<span class="variable">icon=</span><span class="string">"drawable resource"</span>
-            android:<span class="variable">label=</span><span class="string">"string resource"</span>
-            android:<span class="variable">name=</span><span class="string">"string"</span>
-            android:<span class="variable">permissionGroup=</span><span class="string">"string"</span>
-            android:<span class="variable">protectionLevel=</span>[<span class="string">"normal"</span> | <span class="string">"dangerous"</span> | 
-                                     <span class="string">"signature"</span> | <span class="string">"signatureOrSystem"</span>] /&gt;
-</code></pre><p><a id="more"></a><br>四种权限级别</p>
+        <ul>
+<li>通过npm安装grunt-cli到全局</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g grunt-cli</div></pre></td></tr></table></figure>
+
 <ul>
-<li>normal：低风险权限，只要申请了就可以使用（在AndroidManifest.xml中添加<uses-permission>标签），安装时不需要用户确认；</uses-permission></li>
-<li>dangerous：高风险权限，安装时需要用户的确认才可使用；</li>
-<li>signature：只有当申请权限的应用程序的数字签名与声明此权限的应用程序的数字签名相同时（如果是申请系统权限，则需要与系统签名相同），才能将权限授给它；</li>
-<li>signatureOrSystem：签名相同，或者申请权限的应用为系统应用（在system image中）</li>
+<li>生成package.json</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm init</div></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<ul>
+<li>创建Gruntfile.js</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports=<span class="function"><span class="keyword">function</span><span class="params">(grunt)</span></span>{</div><div class="line">	<span class="comment">//Project configuration.</span></div><div class="line">	grunt.initConfig({</div><div class="line">		pkg:grunt.file.readJSON(<span class="string">'package.json'</span>),</div><div class="line">		uglify:{</div><div class="line">			options:{</div><div class="line">				banner:<span class="string">'/*!create by &lt;%=grunt.template.today("yyyy-mm-dd")%&gt;*/\n'</span></div><div class="line">			},</div><div class="line">			static_mappings:{</div><div class="line">				files:[</div><div class="line">					{src:<span class="string">'js/index.js'</span>, dest:<span class="string">'build/index.min.js'</span>},</div><div class="line">					{src:<span class="string">'js/main.js'</span>, dest:<span class="string">'build/main.min.js'</span>}</div><div class="line">				],</div><div class="line">			}</div><div class="line">		},</div><div class="line">		concat:{</div><div class="line">			bar:{</div><div class="line">				src:[<span class="string">'build/*.js'</span>],</div><div class="line">				dest:<span class="string">'dest/aio.min.js'</span>,</div><div class="line">			},</div><div class="line">		},</div><div class="line">		watch:{</div><div class="line">			files:[<span class="string">'js/index.js'</span>],</div><div class="line">			tasks:[<span class="string">'uglify'</span>, <span class="string">'concat'</span>]</div><div class="line">		}</div><div class="line">	});</div><div class="line"></div><div class="line">	grunt.loadNpmTasks(<span class="string">'grunt-contrib-uglify'</span>);</div><div class="line">	grunt.loadNpmTasks(<span class="string">'grunt-contrib-concat'</span>);</div><div class="line">	grunt.loadNpmTasks(<span class="string">'grunt-contrib-watch'</span>);</div><div class="line"></div><div class="line">	grunt.registerTask(<span class="string">'default'</span>,[<span class="string">'uglify'</span>, <span class="string">'concat'</span>, <span class="string">'watch'</span>]);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<ul>
+<li>在项目中安装grunt (—save-dev 将依赖保存在package.json中)</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install grunt --save-dev</div></pre></td></tr></table></figure>
+
+<ul>
+<li>安装grunt插件</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install grunt-contrib-uglify --save-dev</div><div class="line">npm install grunt-contrib-concat --save-dev</div><div class="line">npm install grunt-contrib-watch --save-dev</div></pre></td></tr></table></figure>
+
+<ul>
+<li>执行grunt命令</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grunt</div></pre></td></tr></table></figure>
+
+<ul>
+<li>修改index.js中得内容，watch插件会自动检测变化，并执行uglify和concat</li>
 </ul>
 
       
@@ -235,18 +277,18 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2015/01/04/gson-usage/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/05/10/科学上网/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Gson usage
+          科学上网
         
       </div>
     </a>
   
   
-    <a href="/2014/12/26/android-test-sample/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Google&#39;s Testing Tools For Android --- Espresso</div>
+    <a href="/2015/08/31/Android CursorWrapper/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android CursorWrapper</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -275,7 +317,7 @@ var _hmt = _hmt || [];
 
   <section id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="post-android-protection-level" data-title="android permission protection level" data-url="http://blog.suweya.net/2014/12/30/android-protection-level/"></div>
+    <div class="ds-thread" data-thread-key="post-Grunt Introduction" data-title="Grunt Introduction" data-url="http://blog.suweya.net/2015/08/31/Grunt Introduction/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
