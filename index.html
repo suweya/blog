@@ -117,7 +117,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 20.00px;">Android</a><a href="/tags/Android-Animation/" style="font-size: 10.00px;">Android Animation</a><a href="/tags/Android-Widget/" style="font-size: 10.00px;">Android Widget</a><a href="/tags/Google/" style="font-size: 10.00px;">Google</a><a href="/tags/Image/" style="font-size: 10.00px;">Image</a><a href="/tags/Markdown/" style="font-size: 10.00px;">Markdown</a><a href="/tags/Plan-2015/" style="font-size: 10.00px;">Plan 2015</a><a href="/tags/Polymer/" style="font-size: 10.00px;">Polymer</a><a href="/tags/Widget/" style="font-size: 10.00px;">Widget</a><a href="/tags/web/" style="font-size: 10.00px;">web</a>
+						<a href="/tags/Android/" style="font-size: 20.00px;">Android</a><a href="/tags/Android-Animation/" style="font-size: 10.00px;">Android Animation</a><a href="/tags/Android-Widget/" style="font-size: 10.00px;">Android Widget</a><a href="/tags/Google/" style="font-size: 10.00px;">Google</a><a href="/tags/Image/" style="font-size: 10.00px;">Image</a><a href="/tags/Markdown/" style="font-size: 10.00px;">Markdown</a><a href="/tags/Plan-2015/" style="font-size: 10.00px;">Plan 2015</a><a href="/tags/Polymer/" style="font-size: 10.00px;">Polymer</a><a href="/tags/Web/" style="font-size: 10.00px;">Web</a><a href="/tags/Widget/" style="font-size: 10.00px;">Widget</a><a href="/tags/web/" style="font-size: 10.00px;">web</a>
 					</div>
 				</section>
 				
@@ -210,6 +210,149 @@ var _hmt = _hmt || [];
     
     <div class="article-info article-info-index">
       
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-css3-border" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/13/css3-border/" class="article-date">
+  	<time datetime="2015-09-13T03:07:51.000Z" itemprop="datePublished">9月 13 2015</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/13/css3-border/">CSS3 边框</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="border-radius_添加圆角边框">border-radius 添加圆角边框</h2>
+<ul>
+<li>border-radius:10px; 四个角的半径都为10px</li>
+<li>border-radius:5px 4px 3px 2px; 左上角、右上角、右下角、左下角</li>
+<li>除了使用px单位，还可以使用百分比、em，但兼容性目前还不太好</li>
+</ul>
+<ul>
+<li>example1 实心下半圆 </li>
+<li>CSS</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">dic</span><span class="class">.halfcircle</span><span class="rules">{</span></div><div class="line"></div><div class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">50px</span></span></span>;</div><div class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;</div><div class="line">	<span class="rule"><span class="attribute">backgroud</span>:<span class="value"><span class="hexcolor">#9da</span></span></span>;</div><div class="line">	<span class="rule"><span class="attribute">border-radius</span>:<span class="value"><span class="number">0</span> <span class="number">0</span> <span class="number">50px</span> <span class="number">50px</span></span></span>;</div><div class="line"><span class="rule">}</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>HTML</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"halfcircle"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>example2 实心圆</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">div</span><span class="class">.circle</span> <span class="rules">{</span></div><div class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;</div><div class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;</div><div class="line">	<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#9da</span></span></span>;</div><div class="line">	<span class="rule"><span class="attribute">border-radius</span>:<span class="value"><span class="number">50px</span></span></span>;</div><div class="line"><span class="rule">}</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>example3 实心左半圆</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">div</span><span class="class">.circle</span> <span class="rules">{</span></div><div class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;</div><div class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;</div><div class="line">	<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#9da</span></span></span>;</div><div class="line">	<span class="rule"><span class="attribute">border-radius</span>:<span class="value"><span class="number">50px</span> <span class="number">0</span> <span class="number">0</span> <span class="number">50px</span></span></span>;<span class="comment">/*左上、右上、右下、左下*/</span></div><div class="line"><span class="rule">}</span></div></pre></td></tr></table></figure>
+
+<h2 id="阴影_box-shadow">阴影 box-shadow</h2>
+<ul>
+<li><p>box-shadow 给盒子添加阴影</p>
+</li>
+<li><p>语法</p>
+<ul>
+<li>box-shadow: X轴偏移量 Y轴偏移量 阴影模糊半径 阴影扩展半径 阴影颜色 投影方式</li>
+<li>X轴偏移量  必需，水平阴影的位置，允许负值</li>
+<li>Y轴偏移量  必需，垂直阴影的位置，允许负值</li>
+<li>阴影模糊半径   可选，模糊距离</li>
+<li>阴影扩展半径   可选，阴影的尺寸</li>
+<li>阴影颜色       可选，阴影的颜色，省略默认为黑色</li>
+<li>投影方式       可选</li>
+</ul>
+</li>
+<li><p>example1 外阴影</p>
+</li>
+<li><p>CSS </p>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class">.box_shadow</span><span class="rules">{</span></div><div class="line">	<span class="rule"><span class="attribute">box-shadow</span>:<span class="value"><span class="number">4px</span> <span class="number">2px</span> <span class="number">6px</span> <span class="hexcolor">#333</span></span></span>;</div><div class="line"><span class="rule">}</span></div></pre></td></tr></table></figure>
+
+<p><img src="http://img.mukewang.com/52e21c9000013c8f01180117.jpg" alt=""></p>
+<ul>
+<li>example2 内阴影</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class">.box_shadow</span><span class="rules">{</span></div><div class="line">	<span class="rule"><span class="attribute">box-shadow</span>:<span class="value"><span class="number">4px</span> <span class="number">2px</span> <span class="number">6px</span> <span class="hexcolor">#333</span> inset</span></span>;</div><div class="line"><span class="rule">}</span></div></pre></td></tr></table></figure>
+
+<p><img src="http://img.mukewang.com/54292b990001ebea01290115.jpg" alt=""></p>
+<ul>
+<li>example3 添加多个阴影 (用逗号隔开)</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class">.box_shadow</span><span class="rules">{</span></div><div class="line">	<span class="rule"><span class="attribute">box-shadow</span>:<span class="value"><span class="number">4px</span> <span class="number">2px</span> <span class="number">6px</span> <span class="hexcolor">#f00</span>, -<span class="number">4px</span> -<span class="number">2px</span> <span class="number">6px</span> <span class="hexcolor">#000</span>, <span class="number">0px</span> <span class="number">0px</span> <span class="number">12px</span> <span class="number">5px</span> <span class="hexcolor">#33cc00</span> inset</span></span>;</div><div class="line"><span class="rule">}</span></div></pre></td></tr></table></figure>
+
+<p><img src="http://img.mukewang.com/52e21d210001356d01170116.jpg" alt=""></p>
+<ul>
+<li>阴影模糊半径与阴影扩展半径的区别<ul>
+<li>阴影模糊半径：此参数可选，其值只能是为正值，如果其值为0时，表示阴影不具有模糊效果，其值越大阴影的边缘就越模糊；</li>
+<li>阴影扩展半径：此参数可选，其值可以是正负值，如果值为正，则整个阴影都延展扩大，反之值为负值时，则缩小；</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>X轴偏移量为负值</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class">.boxshadow-outset</span><span class="rules">{</span></div><div class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;</div><div class="line">    <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;</div><div class="line">    <span class="rule"><span class="attribute">box-shadow</span>:<span class="value">-<span class="number">4px</span> <span class="number">4px</span> <span class="number">6px</span> <span class="hexcolor">#666</span></span></span>;</div><div class="line"><span class="rule">}</span></div></pre></td></tr></table></figure>
+
+<p><img src="http://img.mukewang.com/548fd91c000140a901540143.jpg" alt=""></p>
+<ul>
+<li>Y轴偏移量为负值</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class">.boxshadow-outset</span><span class="rules">{</span></div><div class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;</div><div class="line">    <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;</div><div class="line">    <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"><span class="number">4px</span> -<span class="number">4px</span> <span class="number">6px</span> <span class="hexcolor">#666</span></span></span>;</div><div class="line"><span class="rule">}</span></div></pre></td></tr></table></figure>
+
+<p><img src="http://img.mukewang.com/548fd93e00011dd101570142.jpg" alt=""></p>
+<h2 id="为边框应用图片_border-image">为边框应用图片 border-image</h2>
+<ul>
+<li>语法<br><img src="http://img.mukewang.com/52e2201a0001b1e004720260.jpg" alt=""></li>
+</ul>
+<p><a href="http://www.imooc.com/code/383" target="_blank" rel="external">http://www.imooc.com/code/383</a></p>
+<hr>
+<blockquote>
+<p>Reference <a href="http://www.imooc.com/learn/33" target="_blank" rel="external">http://www.imooc.com/learn/33</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+	</div>
+
       
 
       
@@ -703,66 +846,6 @@ var _hmt = _hmt || [];
         <p class="article-more-link">
           <a  href="/2015/05/18/FragmentTabHost/#more">more >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-AutoHideToolbar" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/05/10/AutoHideToolbar/" class="article-date">
-  	<time datetime="2015-05-10T14:13:40.000Z" itemprop="datePublished">5月 10 2015</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/10/AutoHideToolbar/">AutoHideToolbar</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>AutoHideToolbar 可以自动隐藏Toolbar，只需要通过如下步骤：</p>
-<p><a href="https://github.com/suweya/AutoHideToolBar" target="_blank" rel="external">https://github.com/suweya/AutoHideToolBar</a></p>
-<ol>
-<li>AutoHideToolbarHelper help = new AutoHideToolbarHelper(getActivity(), toolbar)；</li>
-<li>helper.registerOnScrollListener(getListView());</li>
-</ol>
-<p><img src="http://bcs.duapp.com/suweyablog/record.gif" alt="ScreenShot"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Widget/">Widget</a></li></ul>
-	</div>
-
-      
-
       
       <div class="clearfix"></div>
     </div>
