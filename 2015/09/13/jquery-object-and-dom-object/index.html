@@ -3,17 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>新的开始 | 迷途</title>
+  <title>jQuery对象和DOM对象 | 迷途</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用Hexo快速的搭建自己的窝，感觉非常好！">
+  <meta name="description" content="DOM对象
+
+DOM (Document Object Model 文档对象模型)
+12345678910111213&lt;html&gt;&lt;head&gt;&lt;title&gt;demo&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Sample&lt;/h1&gt;&lt;ul&gt;	&lt;li&gt;A&lt;/li&gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新的开始">
-<meta property="og:url" content="http://blog.suweya.net/2014/12/05/新的开始/">
+<meta property="og:title" content="jQuery对象和DOM对象">
+<meta property="og:url" content="http://blog.suweya.net/2015/09/13/jquery-object-and-dom-object/">
 <meta property="og:site_name" content="迷途">
-<meta property="og:description" content="使用Hexo快速的搭建自己的窝，感觉非常好！">
+<meta property="og:description" content="DOM对象
+
+DOM (Document Object Model 文档对象模型)
+12345678910111213&lt;html&gt;&lt;head&gt;&lt;title&gt;demo&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Sample&lt;/h1&gt;&lt;ul&gt;	&lt;li&gt;A&lt;/li&gt;">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新的开始">
-<meta name="twitter:description" content="使用Hexo快速的搭建自己的窝，感觉非常好！">
+<meta name="twitter:title" content="jQuery对象和DOM对象">
+<meta name="twitter:description" content="DOM对象
+
+DOM (Document Object Model 文档对象模型)
+12345678910111213&lt;html&gt;&lt;head&gt;&lt;title&gt;demo&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Sample&lt;/h1&gt;&lt;ul&gt;	&lt;li&gt;A&lt;/li&gt;">
 
   
     <link rel="alternative" href="/atom.xml" title="迷途" type="application/atom+xml">
@@ -175,11 +184,11 @@ var _hmt = _hmt || [];
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-新的开始" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-jquery-object-and-dom-object" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/12/05/新的开始/" class="article-date">
-  	<time datetime="2014-12-05T11:21:59.000Z" itemprop="datePublished">12月 5 2014</time>
+      <a href="/2015/09/13/jquery-object-and-dom-object/" class="article-date">
+  	<time datetime="2015-09-13T06:19:46.000Z" itemprop="datePublished">9月 13 2015</time>
 </a>
     </div>
   
@@ -192,7 +201,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      新的开始
+      jQuery对象和DOM对象
     </h1>
   
 
@@ -200,6 +209,10 @@ var _hmt = _hmt || [];
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -208,7 +221,35 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用Hexo快速的搭建自己的窝，感觉非常好！</p>
+        <ol>
+<li>DOM对象</li>
+</ol>
+<p>DOM (Document Object Model 文档对象模型)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">title</span>&gt;</span>demo<span class="tag">&lt;/<span class="title">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">h1</span>&gt;</span>Sample<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">li</span>&gt;</span>A<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">li</span>&gt;</span>B<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">li</span>&gt;</span>C<span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<p>可以通过JavaScript中的getElementById或getElementByTagName来获取元素节点，得到的DOM元素就是DOM对象。</p>
+<a id="more"></a>
+
+<ol>
+<li>jQuery对象</li>
+</ol>
+<p>jQuery对象就是通过jQuery包装DOM对象后产生的对象<br>只有jQuery对象才能使用jQuery的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'li'</span>).html();</div><div class="line">等价于</div><div class="line"><span class="built_in">document</span>.getElementByTagName(<span class="string">'li'</span>).innerHTML;</div></pre></td></tr></table></figure>
+
+<p>3.DOM对象和jQuery对象的相互转换 </p>
+<ul>
+<li>jQuery对象转DOM对象</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> $li = &(<span class="string">'#li'</span>); <span class="comment">//jQuery对象</span></div><div class="line"><span class="keyword">var</span> li = $li[<span class="number">0</span>]; <span class="comment">//DOM对象</span></div><div class="line"><span class="keyword">var</span> li1 = $li.get(<span class="number">0</span>); <span class="comment">//DOM对象</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>DOM对象转jQuery对象</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> li = <span class="built_in">document</span>.getElementById(<span class="string">'#li'</span>); <span class="comment">//DOM 对象</span></div><div class="line"><span class="keyword">var</span> $li = $(li); <span class="comment">//jQuery对象</span></div></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Reference 《锋利的jQuery》</p>
+</blockquote>
 
       
     </div>
@@ -218,15 +259,20 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2014/12/05/use-hexo-on-github/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/05/10/科学上网/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          使用Hexo在Github上搭建Blog
+          科学上网
         
       </div>
     </a>
   
+  
+    <a href="/2015/09/13/css3-border/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS3 边框</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -253,7 +299,7 @@ var _hmt = _hmt || [];
 
   <section id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="post-新的开始" data-title="新的开始" data-url="http://blog.suweya.net/2014/12/05/新的开始/"></div>
+    <div class="ds-thread" data-thread-key="post-jquery-object-and-dom-object" data-title="jQuery对象和DOM对象" data-url="http://blog.suweya.net/2015/09/13/jquery-object-and-dom-object/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">

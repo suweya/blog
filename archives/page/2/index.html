@@ -117,7 +117,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 20.00px;">Android</a><a href="/tags/Android-Animation/" style="font-size: 10.00px;">Android Animation</a><a href="/tags/Android-Widget/" style="font-size: 10.00px;">Android Widget</a><a href="/tags/Google/" style="font-size: 10.00px;">Google</a><a href="/tags/Image/" style="font-size: 10.00px;">Image</a><a href="/tags/Markdown/" style="font-size: 10.00px;">Markdown</a><a href="/tags/Plan-2015/" style="font-size: 10.00px;">Plan 2015</a><a href="/tags/Polymer/" style="font-size: 10.00px;">Polymer</a><a href="/tags/Web/" style="font-size: 10.00px;">Web</a><a href="/tags/Widget/" style="font-size: 10.00px;">Widget</a><a href="/tags/web/" style="font-size: 10.00px;">web</a>
+						<a href="/tags/Android/" style="font-size: 20.00px;">Android</a><a href="/tags/Android-Animation/" style="font-size: 10.00px;">Android Animation</a><a href="/tags/Android-Widget/" style="font-size: 10.00px;">Android Widget</a><a href="/tags/Google/" style="font-size: 10.00px;">Google</a><a href="/tags/Image/" style="font-size: 10.00px;">Image</a><a href="/tags/Markdown/" style="font-size: 10.00px;">Markdown</a><a href="/tags/Plan-2015/" style="font-size: 10.00px;">Plan 2015</a><a href="/tags/Polymer/" style="font-size: 10.00px;">Polymer</a><a href="/tags/Web/" style="font-size: 15.00px;">Web</a><a href="/tags/Widget/" style="font-size: 10.00px;">Widget</a><a href="/tags/web/" style="font-size: 10.00px;">web</a>
 					</div>
 				</section>
 				
@@ -176,6 +176,69 @@ var _hmt = _hmt || [];
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-FragmentTabHost" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/05/18/FragmentTabHost/" class="article-date">
+  	<time datetime="2015-05-18T03:10:40.000Z" itemprop="datePublished">5月 18 2015</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/18/FragmentTabHost/">FragmentTabHost</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>FragmentTabHost是TabHost的子类，是特殊的TabHost专门处理Tab中的Fragment。官方的解析如下：</li>
+</ul>
+<blockquote>
+<p>Special TabHost that allows the use of Fragment objects for its tab content. When placing this in a view hierarchy, after inflating the hierarchy you must call setup(Context, FragmentManager, int) to complete the initialization of the tab host.</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Widget/">Android Widget</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/05/18/FragmentTabHost/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-AutoHideToolbar" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -696,67 +759,6 @@ totalItemCount
       
         <p class="article-more-link">
           <a  href="/2015/01/04/gson-usage/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-android-protection-level" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/30/android-protection-level/" class="article-date">
-  	<time datetime="2014-12-30T07:34:29.000Z" itemprop="datePublished">12月 30 2014</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/30/android-protection-level/">android permission protection level</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Android中对于一些需要付费、用户隐私的操作，我们都会格外小心。<br>出于安全性的考虑，应用在安装的时候都会列出需要的权限列表，在原生的ROM中对于需要付费和用户隐私的权限都会高亮提示用户，在Flyme和Miui等第三方Rom一般都会提供权限控制开关。除了系统定义好的权限，我们也可以自定义自己的权限。语法如下：</p>
-<pre><code>&lt;permission android:<span class="variable">description=</span><span class="string">"string resource"</span>
-            android:<span class="variable">icon=</span><span class="string">"drawable resource"</span>
-            android:<span class="variable">label=</span><span class="string">"string resource"</span>
-            android:<span class="variable">name=</span><span class="string">"string"</span>
-            android:<span class="variable">permissionGroup=</span><span class="string">"string"</span>
-            android:<span class="variable">protectionLevel=</span>[<span class="string">"normal"</span> | <span class="string">"dangerous"</span> | 
-                                     <span class="string">"signature"</span> | <span class="string">"signatureOrSystem"</span>] /&gt;
-</code></pre><p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2014/12/30/android-protection-level/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
