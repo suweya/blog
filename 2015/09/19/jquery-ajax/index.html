@@ -3,17 +3,53 @@
 <head>
   <meta charset="utf-8">
   
-  <title>科学上网 | 迷途</title>
+  <title>jQuery Ajax | 迷途</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="链接： http://honx.in/_VU1x6YkWGiBqItL1">
+  <meta name="description" content="Ajax的优势
+
+不需要插件支持
+优秀的用户体验
+提高Web程序的性能
+减轻服务器和带宽的负担
+
+Ajax的不足
+
+浏览器对XMLHttpRequest对象支持度不足
+破坏浏览器的前进、后退按钮的正常功能
+对搜索引擎的支持不足
+开发和调试工具的缺乏">
 <meta property="og:type" content="article">
-<meta property="og:title" content="科学上网">
-<meta property="og:url" content="http://blog.suweya.net/2016/05/10/科学上网/">
+<meta property="og:title" content="jQuery Ajax">
+<meta property="og:url" content="http://blog.suweya.net/2015/09/19/jquery-ajax/">
 <meta property="og:site_name" content="迷途">
-<meta property="og:description" content="链接： http://honx.in/_VU1x6YkWGiBqItL1">
+<meta property="og:description" content="Ajax的优势
+
+不需要插件支持
+优秀的用户体验
+提高Web程序的性能
+减轻服务器和带宽的负担
+
+Ajax的不足
+
+浏览器对XMLHttpRequest对象支持度不足
+破坏浏览器的前进、后退按钮的正常功能
+对搜索引擎的支持不足
+开发和调试工具的缺乏">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="科学上网">
-<meta name="twitter:description" content="链接： http://honx.in/_VU1x6YkWGiBqItL1">
+<meta name="twitter:title" content="jQuery Ajax">
+<meta name="twitter:description" content="Ajax的优势
+
+不需要插件支持
+优秀的用户体验
+提高Web程序的性能
+减轻服务器和带宽的负担
+
+Ajax的不足
+
+浏览器对XMLHttpRequest对象支持度不足
+破坏浏览器的前进、后退按钮的正常功能
+对搜索引擎的支持不足
+开发和调试工具的缺乏">
 
   
     <link rel="alternative" href="/atom.xml" title="迷途" type="application/atom+xml">
@@ -175,11 +211,11 @@ var _hmt = _hmt || [];
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-科学上网" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-jquery-ajax" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/10/科学上网/" class="article-date">
-  	<time datetime="2016-05-10T14:13:40.000Z" itemprop="datePublished">5月 10 2016</time>
+      <a href="/2015/09/19/jquery-ajax/" class="article-date">
+  	<time datetime="2015-09-19T14:25:12.000Z" itemprop="datePublished">9月 19 2015</time>
 </a>
     </div>
   
@@ -192,7 +228,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      科学上网
+      jQuery Ajax
     </h1>
   
 
@@ -208,7 +244,35 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>链接： <a href="http://honx.in/_VU1x6YkWGiBqItL1" target="_blank" rel="external">http://honx.in/_VU1x6YkWGiBqItL1</a></p>
+        <p>Ajax的优势</p>
+<ul>
+<li>不需要插件支持</li>
+<li>优秀的用户体验</li>
+<li>提高Web程序的性能</li>
+<li>减轻服务器和带宽的负担</li>
+</ul>
+<p>Ajax的不足</p>
+<ul>
+<li>浏览器对XMLHttpRequest对象支持度不足</li>
+<li>破坏浏览器的前进、后退按钮的正常功能</li>
+<li>对搜索引擎的支持不足</li>
+<li>开发和调试工具的缺乏</li>
+</ul>
+<a id="more"></a>
+
+<ol>
+<li>编写第一个Ajax例子</li>
+</ol>
+<p>首先编写HTML代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">value</span>=<span class="value">"Ajax Submit"</span> <span class="attribute">onclick</span>=<span class="value">"Ajax();"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"resText"</span>/&gt;</span></div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//通过这个函数来异步获取信息</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Ajax</span><span class="params">()</span></span>{ </div><div class="line">	<span class="keyword">var</span> xmlHttpReq = <span class="literal">null</span>;	<span class="comment">//声明一个空对象用来装入XMLHttpRequest</span></div><div class="line">	<span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject){<span class="comment">//IE5 IE6是以ActiveXObject的方式引入XMLHttpRequest的</span></div><div class="line">		xmlHttpReq = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">	} </div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest){<span class="comment">//除IE5 IE6 以外的浏览器XMLHttpRequest是window的子对象</span></div><div class="line">		xmlHttpReq = <span class="keyword">new</span> XMLHttpRequest();<span class="comment">//实例化一个XMLHttpRequest</span></div><div class="line">	}</div><div class="line">	<span class="keyword">if</span>(xmlHttpReq != <span class="literal">null</span>){	<span class="comment">//如果对象实例化成功 </span></div><div class="line">		xmlHttpReq.open(<span class="string">"GET"</span>,<span class="string">"test.jsp"</span>,<span class="literal">true</span>);	<span class="comment">//调用open()方法并采用异步方式</span></div><div class="line">		xmlHttpReq.onreadystatechange=RequestCallBack; <span class="comment">//设置回调函数</span></div><div class="line">		xmlHttpReq.send(<span class="literal">null</span>);	<span class="comment">//因为使用get方式提交，所以可以使用null参调用</span></div><div class="line">	}</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">RequestCallBack</span><span class="params">()</span></span>{<span class="comment">//一旦readyState值改变，将会调用这个函数</span></div><div class="line">		<span class="keyword">if</span>(xmlHttpReq.readyState == <span class="number">4</span>){</div><div class="line">				<span class="keyword">if</span>(xmlHttpReq.status == <span class="number">200</span>){</div><div class="line">					<span class="comment">//将xmlHttpReq.responseText的值赋给ID为 resText 的元素</span></div><div class="line">					<span class="built_in">document</span>.getElementById(<span class="string">"resText"</span>).innerHTML = xmlHttpReq.responseText;</div><div class="line">				}</div><div class="line">		}</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Reference 《锋利的jQuery》</p>
+</blockquote>
 
       
     </div>
@@ -217,6 +281,15 @@ var _hmt = _hmt || [];
   
     
 <nav id="article-nav">
+  
+    <a href="/2015/10/23/GreenDAO 使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          GreenDAO 使用
+        
+      </div>
+    </a>
   
   
     <a href="/2015/09/13/jquery-object-and-dom-object/" id="article-nav-older" class="article-nav-link-wrap">
@@ -249,7 +322,7 @@ var _hmt = _hmt || [];
 
   <section id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="post-科学上网" data-title="科学上网" data-url="http://blog.suweya.net/2016/05/10/科学上网/"></div>
+    <div class="ds-thread" data-thread-key="post-jquery-ajax" data-title="jQuery Ajax" data-url="http://blog.suweya.net/2015/09/19/jquery-ajax/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
